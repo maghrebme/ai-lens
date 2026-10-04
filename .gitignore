@@ -1,0 +1,15 @@
+# local config and runtime state
+.env
+/data/
+/logs/
+/_site/
+python/venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# local working material, not part of the project
+/backups/
+/references/
+*.png
+!assets/**/*.png

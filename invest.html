@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>عدسة — مسار استثمارات الذكاء الاصطناعي</title>
+  <meta name="description" content="AI evolves at breakneck speed. AI Lens tracks the acceleration in real time—mapping every major model release, research breakthrough, and industry milestone on a single interactive timeline.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="page-invest">
+  <header class="top">
+    <a class="brand" data-nav="./" href="./">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="spec" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="var(--c-models)"/><stop offset=".33" stop-color="var(--c-products)"/>
+          <stop offset=".66" stop-color="var(--c-research)"/><stop offset="1" stop-color="var(--c-society)"/>
+        </linearGradient></defs>
+        <circle cx="21" cy="21" r="14" fill="none" stroke="url(#spec)" stroke-width="4"/>
+        <path d="M31.5 31.5 L43 43" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="21" cy="21" r="4" fill="currentColor"/>
+      </svg>
+      <span class="brand-name"><b data-i18n="brand">عدسة</b><small>AI · LENS</small></span>
+    </a>
+    <nav class="tabs" aria-label="pages">
+      <a data-nav="./" href="./"  data-i18n="navTimeline">الخط الزمني</a>
+      <a data-nav="invest.html" href="invest.html" aria-current="page" data-i18n="navInvest">الاستثمارات</a>
+      <a data-nav="news.html" href="news.html" data-i18n="navNews">آخر الأخبار</a>
+    </nav>
+    <div class="today"><span id="dateG"></span><span id="dateH" class="hijri"></span></div>
+    <div class="actions">
+      <button id="langBtn" class="icon-btn lang" type="button">EN</button>
+      <button id="themeBtn" class="icon-btn" type="button" data-i18n-label="themeLabel">☀</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 data-i18n="heroInvest"></h1>
+    <p class="sub" data-i18n="subInvest"></p>
+  </section>
+
+  <section class="filters" aria-label="filters">
+    <div class="frow"><span class="flabel" data-i18n="typeLabel"></span><div id="typeChips" class="chips" role="group" data-i18n-label="typeLabel"></div></div>
+    <div class="frow"><span class="flabel" data-i18n="regionLabel"></span><div id="regionChips" class="chips" role="group" data-i18n-label="regionLabel"></div></div>
+    <div class="toolbar">
+      <input id="search" class="search" type="search" data-i18n-ph="search" data-i18n-label="search" autocomplete="off">
+      <p class="stats"><b id="count"></b> · <span data-i18n="verifiedNote"></span></p>
+    </div>
+  </section>
+
+  <main>
+    <section id="newsDeals" class="news-deals" hidden>
+      <h2 data-i18n="newsDeals"></h2>
+      <p class="muted" data-i18n="newsDealsSub"></p>
+      <ul id="newsDealsList"></ul>
+    </section>
+    <div id="track" class="track"></div>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-row"><button id="sourcesBtn" class="btn small" type="button"></button><span id="sourcesNote" class="muted"></span></div>
+    <p class="muted" data-i18n="credits"></p>
+    <p class="muted" data-i18n="footer"></p>
+  </footer>
+  <button id="toTop" class="to-top" type="button" data-i18n-label="toTop" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <script type="module" src="assets/js/invest.js"></script>
+</body>
+</html>

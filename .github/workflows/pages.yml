@@ -1,0 +1,70 @@
+# Build the static site and publish it to GitHub Pages.
+# Runs every 12 hours (00:00 and 12:00 UTC) to refresh the news feed, on every push to main,
+# and on demand from the Actions tab.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Claude translation runs only when the repository secret is set.
+      HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Install optional enrichment SDK
+        if: env.HAS_ANTHROPIC_KEY == 'true'
+        run: pip install -r python/requirements.txt
+
+      - name: Restore the news history from the live site
+        id: pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - run: |
+          mkdir -p data
+          curl -fsSL "${{ steps.pages.outputs.base_url }}/api/store.json" -o data/news.json \
+            || echo "No previous store yet — starting fresh."
+
+      - name: Build
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ENRICH: ${{ env.HAS_ANTHROPIC_KEY == 'true' && 'auto' || 'off' }}
+          REFRESH_MINUTES: "720"
+        run: python python/build_static.py --out _site
+        # REFRESH_MINUTES only labels the build; the cron above sets the real schedule.
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
