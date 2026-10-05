@@ -27,6 +27,7 @@ from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import posixpath
+import re
 from urllib.parse import parse_qs, unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -90,7 +91,7 @@ CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 
        "base-uri 'self'; form-action 'none'; frame-ancestors 'none'")
 
 # Only these files are ever served from disk — never python/, data/, logs/ or .env.
-PUBLIC_FILES = {"/index.html", "/news.html", "/invest.html", "/favicon.svg"}
+PUBLIC_FILES = {"/index.html", "/news.html", "/invest.html", "/philosophy.html", "/favicon.svg"}
 ASSETS = (ROOT / "assets").resolve()
 
 
@@ -158,6 +159,7 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
         self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Accept-Ranges", "bytes")
         self.send_header("Content-Security-Policy", CSP)
         super().end_headers()
 
@@ -194,8 +196,41 @@ class Handler(SimpleHTTPRequestHandler):
         safe = public_path(path)
         if safe is None:
             return self.send_error(HTTPStatus.NOT_FOUND)
+        rng = re.fullmatch(r"bytes=(\d*)-(\d*)", self.headers.get("Range", "").strip())
+        if rng and rng.group(0) != "bytes=-":
+            return self._serve_range(ROOT / safe.lstrip("/"), rng, head)
         self.path = safe
         return super().do_HEAD() if head else super().do_GET()
+
+    def _serve_range(self, file: Path, rng: re.Match, head: bool) -> None:
+        """Byte ranges, so audio can seek (and play at all in Safari)."""
+        size = file.stat().st_size
+        first, last = rng.group(1), rng.group(2)
+        if first:
+            start, end = int(first), min(int(last) if last else size - 1, size - 1)
+        else:  # suffix range: the last N bytes
+            start, end = max(0, size - int(last)), size - 1
+        if start > end or start >= size:
+            self.send_response(HTTPStatus.REQUESTED_RANGE_NOT_SATISFIABLE)
+            self.send_header("Content-Range", f"bytes */{size}")
+            self.end_headers()
+            return None
+        self.send_response(HTTPStatus.PARTIAL_CONTENT)
+        self.send_header("Content-Type", self.guess_type(str(file)))
+        self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+        self.send_header("Content-Length", str(end - start + 1))
+        self.end_headers()
+        if not head:
+            with open(file, "rb") as f:
+                f.seek(start)
+                remaining = end - start + 1
+                while remaining > 0:
+                    chunk = f.read(min(65536, remaining))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    remaining -= len(chunk)
+        return None
 
     def do_POST(self) -> None:  # noqa: N802
         path, _ = self._route()
@@ -212,6 +247,8 @@ class Handler(SimpleHTTPRequestHandler):
     def guess_type(self, path):
         if str(path).endswith(".js"):
             return "text/javascript; charset=utf-8"
+        if str(path).endswith(".m4a"):
+            return "audio/mp4"
         return super().guess_type(path)
 
 

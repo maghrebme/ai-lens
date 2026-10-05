@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from enrich import make_enricher  # noqa: E402
 from news import NewsStore  # noqa: E402
 
-PAGES = ["index.html", "news.html", "invest.html", "favicon.svg"]
+PAGES = ["index.html", "news.html", "invest.html", "philosophy.html", "favicon.svg"]
 
 
 def main() -> None:

@@ -97,7 +97,7 @@ function applyStaticText(page) {
   const html = document.documentElement;
   html.lang = state.lang;
   html.dir = isRtl() ? 'rtl' : 'ltr';
-  document.title = { news: t.titleNews, invest: t.titleInvest }[page] || t.titleTimeline;
+  document.title = { news: t.titleNews, invest: t.titleInvest, philosophy: t.titlePhilosophy }[page] || t.titleTimeline;
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const v = t[el.dataset.i18n];
     if (typeof v === 'string') el.textContent = v;
