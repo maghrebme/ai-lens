@@ -367,7 +367,11 @@ def _fetch_once(src: dict, now: datetime) -> tuple[str, list[dict], str | None]:
         # Feeds never need DTD entities; refusing them rules out entity-expansion attacks.
         if b"<!ENTITY" in data[:20_000]:
             raise ValueError("feed declares XML entities")
-        items = parse_feed(data.lstrip(b"\xef\xbb\xbf \t\r\n"), src, now)
+        data = data.lstrip(b"\xef\xbb\xbf \t\r\n")
+        try:
+            items = parse_feed(data, src, now)
+        except ET.ParseError as exc:
+            raise ValueError(f"not XML ({exc}); starts with {data[:40]!r}") from None
         return src["id"], items, None
     except Exception as exc:  # network, HTTP, XML — one bad feed never sinks the run
         return src["id"], [], f"{type(exc).__name__}: {exc}"[:200]
