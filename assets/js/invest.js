@@ -7,7 +7,7 @@ import {
 import { orgsOf, timelineHidden, newsHidden, initSources } from './sources.js';
 
 const TYPES = ['funding', 'acquisition', 'strategic', 'infrastructure', 'public', 'market', 'ipo'];
-const REGIONS = ['us', 'europe', 'china', 'gulf', 'other'];
+const REGIONS = ['us', 'europe', 'china', 'gulf', 'northafrica', 'other'];
 const TYPE_COLOR = {
   funding: 'var(--c-models)', acquisition: 'var(--c-products)', strategic: 'var(--c-research)',
   infrastructure: 'var(--c-business)', public: 'var(--c-policy)', market: 'var(--c-society)', ipo: 'var(--c-products)',
@@ -20,7 +20,7 @@ const view = { all: [], feeds: [], news: [], types: new Set(), regions: new Set(
 function money(n, cur) {
   if (state.lang === 'ar') {
     const num = new Intl.NumberFormat('ar-u-nu-latn', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
-    return `${num} ${cur === 'EUR' ? 'يورو' : 'دولار'}`;
+    return `${num} ${{ EUR: 'يورو', MAD: 'درهم' }[cur] || 'دولار'}`;
   }
   return new Intl.NumberFormat('en-US', {
     style: 'currency', currency: cur || 'USD', notation: 'compact', maximumFractionDigits: 1,

@@ -9,6 +9,7 @@ export const orgsOf = (it) => it.org.split(' · ').map((o) => ORG_ALIASES[o] || 
 
 const ORG_GROUPS = {
   gulf: ['TII', 'MBZUAI', 'G42', 'UAE', 'Saudi Arabia'],
+  northafrica: ['Morocco', 'Egypt', 'Nexus Core Systems', 'Hassan Allam Utilities', 'A15'],
   gov: ['EU', 'China', 'US', 'UK', 'Japan', 'France', 'Governments', 'Vatican', 'United Nations', 'UNESCO'],
   research: ['Academia', 'SRI', 'Bell Labs', 'Future of Life Institute', 'Nobel'],
 };
@@ -61,7 +62,7 @@ export function initSources({ getOrgs, getFeeds, onChange }) {
   const render = () => {
     const t = T();
     const orgs = getOrgs(), feeds = getFeeds();
-    const groups = ['companies', 'research', 'gulf', 'gov'].map((g) => {
+    const groups = ['companies', 'research', 'gulf', 'northafrica', 'gov'].map((g) => {
       const list = orgs.filter((o) => groupOf(o.name) === g);
       return list.length ? `<div class="src-group"><h4>${esc(t.srcGroups[g])}</h4><ul class="src-list">${
         list.map((o) => item('orgs', o.name, esc(orgName(o.name)), o.count)).join('')}</ul></div>` : '';

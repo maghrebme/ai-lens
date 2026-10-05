@@ -724,6 +724,17 @@
   "currency": "USD"
  },
  {
+  "date": "2025-06-13",
+  "type": "infrastructure",
+  "org": "Naver · NVIDIA · Nexus Core Systems",
+  "region": "northafrica",
+  "title_en": "500 MW green AI data centre planned in Morocco",
+  "title_ar": "خطة لمركز بيانات أخضر للذكاء الاصطناعي بقدرة 500 ميغاواط في المغرب",
+  "summary_en": "Naver, NVIDIA, Nexus Core Systems and Lloyds Capital announce a renewable-powered AI data centre to serve Europe, the Middle East and Africa.",
+  "summary_ar": "Naver وNVIDIA وNexus Core Systems وLloyds Capital تعلن مركز بيانات للذكاء الاصطناعي يعمل بالطاقة المتجددة لخدمة أوروبا والشرق الأوسط وأفريقيا.",
+  "link": "https://www.africaainews.com/p/ai-gets-crumbs-of-289m-startup-funding"
+ },
+ {
   "date": "2025-07-01",
   "type": "market",
   "org": "NVIDIA",
@@ -1099,6 +1110,20 @@
   "precision": "month"
  },
  {
+  "date": "2026-04-01",
+  "precision": "month",
+  "type": "infrastructure",
+  "org": "Morocco · Nexus Core Systems",
+  "region": "northafrica",
+  "amount": 12000000000.0,
+  "currency": "MAD",
+  "title_en": "Morocco signs a $1.28 billion AI factory deal",
+  "title_ar": "المغرب يوقّع اتفاقًا لمصنع ذكاء اصطناعي بقيمة 1.28 مليار دولار",
+  "summary_en": "A 12 billion dirham MoU signed at GITEX Africa in Marrakech for a computing centre in Nouaceur, using NVIDIA chips and operated by Naver Cloud.",
+  "summary_ar": "مذكرة تفاهم بقيمة 12 مليار درهم وُقّعت في GITEX Africa بمراكش لمركز حوسبة في النواصر، برقائق NVIDIA وتشغيل Naver Cloud.",
+  "link": "https://www.ecofinagency.com/news/1304-54600-morocco-signs-1-28-billion-mou-to-build-ai-factory"
+ },
+ {
   "date": "2026-05-01",
   "type": "funding",
   "org": "Anthropic",
@@ -1143,6 +1168,20 @@
   "currency": "USD",
   "valuation": 12000000000.0,
   "valuation_currency": "USD"
+ },
+ {
+  "date": "2026-06-01",
+  "precision": "month",
+  "type": "infrastructure",
+  "org": "Hassan Allam Utilities · A15",
+  "region": "northafrica",
+  "amount": 400000000.0,
+  "currency": "USD",
+  "title_en": "Egypt licenses a $400 million AI data centre",
+  "title_ar": "مصر ترخّص مركز بيانات للذكاء الاصطناعي بقيمة 400 مليون دولار",
+  "summary_en": "The National Telecommunications Regulatory Authority licenses a project led by Hassan Allam Utilities and A15.",
+  "summary_ar": "الجهاز القومي لتنظيم الاتصالات يرخّص مشروعًا بقيادة حسن علام للمرافق وA15.",
+  "link": "https://blockchain.news/news/egypt-ai-ecosystem-data-center"
  },
  {
   "date": "2026-06-16",
@@ -1245,5 +1284,18 @@
   "currency": "USD",
   "valuation": 15500000000.0,
   "valuation_currency": "USD"
+ },
+ {
+  "date": "2026-09-09",
+  "type": "public",
+  "org": "Egypt · NVIDIA",
+  "region": "northafrica",
+  "amount": 1000000000.0,
+  "currency": "USD",
+  "title_en": "Egypt plans a $1 billion AI data centre",
+  "title_ar": "مصر تخطط لمركز بيانات للذكاء الاصطناعي بقيمة مليار دولار",
+  "summary_en": "A 200 MW facility with NVIDIA technology; a first 20 MW, $200 million phase by Vodafone Business, Elsewedy Electric and Cassava Technologies.",
+  "summary_ar": "منشأة بقدرة 200 ميغاواط بتقنيات NVIDIA، تبدأ بمرحلة أولى بقدرة 20 ميغاواط وقيمة 200 مليون دولار تنفّذها Vodafone Business والسويدي إليكتريك وCassava Technologies.",
+  "link": "https://www.arabnews.com/business/egypt-moves-to-build-1bn-ai-data-centre-with-nvidia-tech-3001048"
  }
 ]
