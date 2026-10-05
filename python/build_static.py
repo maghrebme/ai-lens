@@ -16,8 +16,10 @@ Ai-Lens — build a static copy of the site for hosting without a server
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -29,6 +31,31 @@ from enrich import make_enricher  # noqa: E402
 from news import NewsStore  # noqa: E402
 
 PAGES = ["index.html", "news.html", "invest.html", "reflections.html", "philosophy.html", "favicon.svg"]
+
+
+def stamp_assets(out: Path) -> str:
+    """Add ?v=<content hash> to script, style and data URLs.
+
+    Static hosts let browsers cache files for a while (GitHub Pages: 10 minutes).
+    Without a version, a new page can run with an old cached script and the two
+    disagree. The hash changes whenever any asset changes, so every deploy
+    loads a matching set. All importers get the same URL, so each module still
+    loads once."""
+    digest = hashlib.sha256()
+    for f in sorted((out / "assets").rglob("*")):
+        if f.is_file() and f.suffix in (".js", ".css", ".json"):
+            digest.update(f.read_bytes())
+    v = digest.hexdigest()[:10]
+    for page in out.glob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        text = re.sub(r'((?:src|href)="assets/(?:js|css)/[\w.-]+\.(?:js|css))"', rf'\1?v={v}"', text)
+        page.write_text(text, encoding="utf-8")
+    for script in (out / "assets" / "js").glob("*.js"):
+        text = script.read_text(encoding="utf-8")
+        text = re.sub(r"""(from\s+['"]\./[\w.-]+\.js)(['"])""", rf"\1?v={v}\2", text)
+        text = re.sub(r"""(['"]assets/data/[\w.-]+\.json)(['"])""", rf"\1?v={v}\2", text)
+        script.write_text(text, encoding="utf-8")
+    return v
 
 
 def main() -> None:
@@ -53,6 +80,9 @@ def main() -> None:
     for name in PAGES:
         shutil.copy2(ROOT / name, out / name)
     shutil.copytree(ROOT / "assets", out / "assets")
+
+    version = stamp_assets(out)
+    print(f"asset version {version}")
 
     snapshot = store.snapshot(retention)
     (out / "api" / "news.json").write_text(json.dumps(snapshot, ensure_ascii=False), encoding="utf-8")
