@@ -7,7 +7,7 @@ import {
 import { orgsOf, timelineHidden, newsHidden, initSources } from './sources.js';
 
 const TYPES = ['funding', 'acquisition', 'strategic', 'infrastructure', 'public', 'market', 'ipo'];
-const REGIONS = ['us', 'europe', 'china', 'gulf'];
+const REGIONS = ['us', 'europe', 'china', 'gulf', 'other'];
 const TYPE_COLOR = {
   funding: 'var(--c-models)', acquisition: 'var(--c-products)', strategic: 'var(--c-research)',
   infrastructure: 'var(--c-business)', public: 'var(--c-policy)', market: 'var(--c-society)', ipo: 'var(--c-products)',

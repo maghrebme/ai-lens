@@ -1071,6 +1071,18 @@
   "link": "https://arxiv.org/abs/1810.04805"
  },
  {
+  "date": "2019-01-01",
+  "category": "business",
+  "impact": 3,
+  "org": "Cohere",
+  "link": "https://en.wikipedia.org/wiki/Cohere",
+  "title_en": "Cohere is founded",
+  "title_ar": "تأسيس Cohere",
+  "summary_en": "Aidan Gomez, a co-author of “Attention Is All You Need”, founds the enterprise AI lab in Toronto with Nick Frosst and Ivan Zhang.",
+  "summary_ar": "إيدان غوميز، أحد مؤلفي ورقة «الانتباه هو كل ما تحتاجه»، يؤسس مختبر الذكاء الاصطناعي للمؤسسات في تورنتو مع نيك فروست وإيفان تشانغ.",
+  "precision": "year"
+ },
+ {
   "date": "2019-01-24",
   "category": "research",
   "impact": 3,
@@ -1424,6 +1436,17 @@
   "link": "https://openai.com/index/chatgpt/"
  },
  {
+  "date": "2022-12-07",
+  "category": "products",
+  "impact": 4,
+  "org": "Perplexity",
+  "link": "https://en.wikipedia.org/wiki/Perplexity_AI",
+  "title_en": "Perplexity launches its answer engine",
+  "title_ar": "Perplexity تطلق محرك الإجابات",
+  "summary_en": "An AI search engine that answers questions with cited sources.",
+  "summary_ar": "محرك بحث بالذكاء الاصطناعي يجيب عن الأسئلة مع ذكر المصادر."
+ },
+ {
   "date": "2023-01-01",
   "category": "models",
   "impact": 3,
@@ -1446,6 +1469,18 @@
   "summary_ar": "تقنية PagedAttention تجعل تشغيل النماذج اللغوية الكبيرة أسرع وأرخص.",
   "precision": "year",
   "link": "https://en.wikipedia.org/wiki/VLLM"
+ },
+ {
+  "date": "2023-01-01",
+  "category": "products",
+  "impact": 3,
+  "org": "ElevenLabs",
+  "link": "https://en.wikipedia.org/wiki/ElevenLabs",
+  "title_en": "ElevenLabs opens its voice platform",
+  "title_ar": "ElevenLabs تطلق منصتها الصوتية",
+  "summary_en": "The start-up releases the beta of its AI speech-generation platform.",
+  "summary_ar": "الشركة الناشئة تطلق النسخة التجريبية من منصتها لتوليد الكلام بالذكاء الاصطناعي.",
+  "precision": "month"
  },
  {
   "date": "2023-01-23",
@@ -1782,6 +1817,17 @@
   "link": "https://arxiv.org/abs/2401.04088"
  },
  {
+  "date": "2023-12-20",
+  "category": "products",
+  "impact": 3,
+  "org": "Suno",
+  "link": "https://en.wikipedia.org/wiki/Suno_AI",
+  "title_en": "Suno brings AI music to everyone",
+  "title_ar": "Suno تتيح توليد الموسيقى للجميع",
+  "summary_en": "The song generator launches its web app and becomes a plugin in Microsoft Copilot.",
+  "summary_ar": "مولّد الأغاني يطلق تطبيقه على الويب ويصبح إضافة في Microsoft Copilot."
+ },
+ {
   "date": "2023-12-27",
   "category": "policy",
   "impact": 3,
@@ -2002,6 +2048,30 @@
   "title_ar": "قانون الذكاء الاصطناعي الأوروبي يدخل حيز النفاذ",
   "summary_en": "The world's first comprehensive, risk-based AI law becomes binding, with obligations phased in over years.",
   "summary_ar": "أول قانون شامل للذكاء الاصطناعي قائم على المخاطر يصبح ملزمًا، مع تطبيق تدريجي للالتزامات."
+ },
+ {
+  "date": "2024-08-01",
+  "category": "models",
+  "impact": 3,
+  "org": "Black Forest Labs",
+  "link": "https://en.wikipedia.org/wiki/Black_Forest_Labs",
+  "title_en": "Black Forest Labs launches FLUX.1",
+  "title_ar": "Black Forest Labs تطلق FLUX.1",
+  "summary_en": "Former Stability AI researchers behind Stable Diffusion launch their own lab and the FLUX.1 image model.",
+  "summary_ar": "باحثون سابقون في Stability AI ممن طوّروا Stable Diffusion يطلقون مختبرهم ونموذج الصور FLUX.1.",
+  "precision": "month"
+ },
+ {
+  "date": "2024-09-01",
+  "category": "products",
+  "impact": 3,
+  "org": "Replit",
+  "link": "https://en.wikipedia.org/wiki/Replit",
+  "title_en": "Replit Agent builds apps from prompts",
+  "title_ar": "Replit Agent يبني التطبيقات من الأوامر",
+  "summary_en": "Replit introduces an AI agent that builds software from natural-language instructions.",
+  "summary_ar": "Replit تقدّم وكيلًا ذكيًا يبني البرمجيات من تعليمات بلغة طبيعية.",
+  "precision": "month"
  },
  {
   "date": "2024-09-12",
@@ -2322,6 +2392,18 @@
   "summary_en": "Built for transparent, multilingual step-by-step reasoning.",
   "summary_ar": "مصمَّم للاستدلال خطوة بخطوة بشفافية وبعدة لغات.",
   "link": "https://en.wikipedia.org/wiki/Mistral_AI"
+ },
+ {
+  "date": "2025-07-01",
+  "category": "business",
+  "impact": 4,
+  "org": "Google · Windsurf · Cognition",
+  "link": "https://en.wikipedia.org/wiki/Cognition_AI",
+  "title_en": "The Windsurf deal",
+  "title_ar": "صفقة Windsurf",
+  "summary_en": "Google pays $2.4 billion to hire Windsurf's CEO and senior staff; Cognition then agrees to acquire the rest of the AI code editor.",
+  "summary_ar": "Google تدفع 2.4 مليار دولار لضم الرئيس التنفيذي لـWindsurf وكبار موظفيها، ثم توافق Cognition على الاستحواذ على بقية محرر الشيفرة الذكي.",
+  "precision": "month"
  },
  {
   "date": "2025-07-09",
@@ -2776,6 +2858,18 @@
   "title_ar": "GPT-5.4",
   "summary_en": "OpenAI releases GPT-5.4.",
   "summary_ar": "OpenAI تطلق GPT-5.4."
+ },
+ {
+  "date": "2026-04-01",
+  "category": "business",
+  "impact": 4,
+  "org": "Cohere · Aleph Alpha",
+  "link": "https://en.wikipedia.org/wiki/Cohere",
+  "title_en": "Cohere agrees to acquire Aleph Alpha",
+  "title_ar": "Cohere توافق على الاستحواذ على Aleph Alpha",
+  "summary_en": "The Canadian lab agrees to buy Germany's Aleph Alpha, with the backing of the German government.",
+  "summary_ar": "المختبر الكندي يوافق على شراء Aleph Alpha الألمانية بدعم من الحكومة الألمانية.",
+  "precision": "month"
  },
  {
   "date": "2026-04-02",
