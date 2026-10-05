@@ -385,7 +385,7 @@ main { padding: 0 var(--gutter); }
 }
 
 
-/* ── philosophy: magazine article ───────────────────────── */
+/* ── reflections: magazine article ───────────────────────── */
 .read-progress {
   position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 30; transform: scaleX(0);
   transform-origin: left; background: linear-gradient(90deg, var(--c-models), var(--c-products), var(--c-research), var(--c-policy));

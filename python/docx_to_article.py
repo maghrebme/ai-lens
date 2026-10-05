@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Ai-Lens — turn a Word article into the HTML used by philosophy.html.
+Ai-Lens — turn a Word article into the HTML used by reflections.html.
 
     python python/docx_to_article.py article-ar.docx ar > /tmp/ar.html
     python python/docx_to_article.py article-en.docx en > /tmp/en.html
@@ -13,7 +13,7 @@ into the title and the standfirst. A final paragraph that is entirely bold
 becomes the closing pull quote.
 
 The output has two marked parts, <!-- head:xx --> and <!-- body:xx -->; replace
-the matching blocks in philosophy.html with them. Standard library only.
+the matching blocks in reflections.html with them. Standard library only.
 """
 
 from __future__ import annotations

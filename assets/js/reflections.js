@@ -1,4 +1,4 @@
-// Ai-Lens — the Philosophy essay: language switching between the Arabic and
+// Ai-Lens — the Reflections essay: language switching between the Arabic and
 // English texts, the audio debate player, reading time, reading progress and
 // the "current section" highlight in the contents list.
 
@@ -68,7 +68,7 @@ function syncToc() {
 function boot() {
   syncToc();
   wide.addEventListener('change', syncToc);
-  initChrome('philosophy', (what) => {
+  initChrome('reflections', (what) => {
     if (what === 'lang') {
       showLanguage();
       if ($('#debateAudio').paused) selectAudio(state.lang);

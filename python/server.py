@@ -91,7 +91,7 @@ CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 
        "base-uri 'self'; form-action 'none'; frame-ancestors 'none'")
 
 # Only these files are ever served from disk — never python/, data/, logs/ or .env.
-PUBLIC_FILES = {"/index.html", "/news.html", "/invest.html", "/philosophy.html", "/favicon.svg"}
+PUBLIC_FILES = {"/index.html", "/news.html", "/invest.html", "/reflections.html", "/philosophy.html", "/favicon.svg"}
 ASSETS = (ROOT / "assets").resolve()
 
 

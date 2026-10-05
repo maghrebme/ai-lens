@@ -113,7 +113,7 @@ The interface is **Arabic by default** with full English support, dark and light
 | **Timeline** (`index.html`) | 289 milestones from 1843 to today on a "snake" progress line, future at the top and origins at the bottom. Full cards, a line that fills as you scroll, and decade shortcuts. Major model launches from the labs' official feeds join it automatically. |
 | **Investments** (`invest.html`) | 92 funding rounds, acquisitions, infrastructure deals, government programmes and IPOs (2010 → 2026) on a vertical track that puts each amount first. |
 | **Latest news** (`news.html`) | A live feed from 17 sources (AI labs, international and Arabic tech press), refreshed every 12 hours and grouped by day on a vertical timeline. |
-| **Reflections** (`philosophy.html`) | A magazine-style essay on what accelerating AI means for the value of human skills, with an audio debate in Arabic, English and French produced with Google NotebookLM. |
+| **Reflections** (`reflections.html`) | A magazine-style essay on what accelerating AI means for the value of human skills, with an audio debate in Arabic, English and French produced with Google NotebookLM. |
 
 Shared features:
 - Category, type and region filters, plus search.
