@@ -1,7 +1,8 @@
 """
 Ai-Lens — news sources.
 
-Every source is a public RSS / Atom feed. `kind` drives the impact heuristic
+Every source is a public RSS / Atom feed, except `format: "blog"` sources, whose
+blog index page is read directly (see news.parse_blog). `kind` drives the impact heuristic
 (first-party lab announcements weigh more than press coverage), `hint` is the
 category used when the keyword classifier finds nothing, and `ai_filter`
 keeps only AI-related items from general technology feeds.
@@ -21,6 +22,9 @@ SOURCES = [
      "url": "https://blog.google/technology/ai/rss/"},
     {"id": "mistral", "name": "Mistral AI", "lang": "en", "kind": "lab", "hint": "models",
      "url": "https://mistral.ai/rss.xml"},
+    {"id": "aleph-alpha", "name": "Aleph Alpha", "lang": "en", "kind": "lab", "hint": "models",
+     "url": "https://aleph-alpha.com/en/blog/", "format": "blog",
+     "post_pattern": r'href="(/en/blog/[a-z0-9-]{12,}/)"', "max_items": 8},
     {"id": "huggingface", "name": "Hugging Face", "lang": "en", "kind": "lab", "hint": "models",
      "url": "https://huggingface.co/blog/feed.xml"},
 

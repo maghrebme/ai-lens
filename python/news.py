@@ -17,6 +17,8 @@ import json
 import logging
 import re
 import threading
+import time
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
@@ -305,20 +307,67 @@ def parse_feed(data: bytes, src: dict, now: datetime) -> list[dict]:
     return out
 
 
-def fetch_source(src: dict, now: datetime) -> tuple[str, list[dict], str | None]:
-    req = urllib.request.Request(src["url"], headers={
+def _download(url: str) -> bytes:
+    req = urllib.request.Request(url, headers={
         "User-Agent": USER_AGENT,
-        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, text/html, */*",
     })
+    with urllib.request.urlopen(req, timeout=FETCH_TIMEOUT) as resp:
+        data = resp.read(MAX_FEED_BYTES + 1)
+    if len(data) > MAX_FEED_BYTES:
+        raise ValueError("response larger than 5 MB")
+    return data
+
+
+def _meta(html_text: str, prop: str) -> str:
+    m = re.search(r'<meta[^>]+(?:property|name)=["\']%s["\'][^>]+content=["\']([^"\']*)' % re.escape(prop), html_text)
+    return html.unescape(m.group(1)).strip() if m else ""
+
+
+def parse_blog(src: dict, now: datetime) -> list[dict]:
+    """For sites without RSS: read the blog index, then each of the newest posts'
+    Open Graph tags and <time datetime>. Posts without a date are skipped."""
+    base = urllib.parse.urlsplit(src["url"])
+    index = _download(src["url"]).decode("utf-8", "replace")
+    links = list(dict.fromkeys(re.findall(src["post_pattern"], index)))[: src.get("max_items", 8)]
+    out = []
+    for path in links:
+        url = urllib.parse.urljoin(f"{base.scheme}://{base.netloc}", path)
+        page = _download(url).decode("utf-8", "replace")
+        t = re.search(r'<time[^>]+datetime=["\']([^"\']+)', page)
+        title = _meta(page, "og:title").split(" — ")[0].strip()
+        published = _parse_date(t.group(1)) if t else None
+        if not title or not published:
+            continue
+        out.append({
+            "id": hashlib.sha1(url.encode("utf-8")).hexdigest()[:12],
+            "title": title, "summary": truncate(_meta(page, "og:description")),
+            "url": url, "image": _meta(page, "og:image") or None,
+            "source": src["id"], "source_name": src["name"], "source_kind": src["kind"],
+            "lang": src["lang"], "published": min(published, now).isoformat().replace("+00:00", "Z"),
+            "hint": src.get("hint", "society"), "feed_tags": [],
+        })
+    return out
+
+
+def fetch_source(src: dict, now: datetime) -> tuple[str, list[dict], str | None]:
+    """Fetch one source, retrying once: feeds occasionally return a bad response."""
+    sid, items, err = _fetch_once(src, now)
+    if err:
+        time.sleep(3)
+        sid, items, err = _fetch_once(src, now)
+    return sid, items, err
+
+
+def _fetch_once(src: dict, now: datetime) -> tuple[str, list[dict], str | None]:
     try:
-        with urllib.request.urlopen(req, timeout=FETCH_TIMEOUT) as resp:
-            data = resp.read(MAX_FEED_BYTES + 1)
-        if len(data) > MAX_FEED_BYTES:
-            raise ValueError("feed larger than 5 MB")
+        if src.get("format") == "blog":
+            return src["id"], parse_blog(src, now), None
+        data = _download(src["url"])
         # Feeds never need DTD entities; refusing them rules out entity-expansion attacks.
         if b"<!ENTITY" in data[:20_000]:
             raise ValueError("feed declares XML entities")
-        items = parse_feed(data, src, now)
+        items = parse_feed(data.lstrip(b"\xef\xbb\xbf \t\r\n"), src, now)
         return src["id"], items, None
     except Exception as exc:  # network, HTTP, XML — one bad feed never sinks the run
         return src["id"], [], f"{type(exc).__name__}: {exc}"[:200]
