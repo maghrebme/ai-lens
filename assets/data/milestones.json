@@ -2317,6 +2317,18 @@
   "link": "https://arxiv.org/abs/2505.09388"
  },
  {
+  "date": "2025-05-01",
+  "precision": "month",
+  "category": "research",
+  "impact": 3,
+  "org": "MBZUAI · IFM",
+  "title_en": "MBZUAI launches the Institute of Foundation Models",
+  "title_ar": "MBZUAI تطلق معهد النماذج الأساسية",
+  "summary_en": "Abu Dhabi's AI university creates IFM to build large open foundation models.",
+  "summary_ar": "جامعة الذكاء الاصطناعي في أبوظبي تؤسس معهد IFM لبناء نماذج أساسية كبيرة ومفتوحة.",
+  "link": "https://en.wikipedia.org/wiki/Mohamed_bin_Zayed_University_of_Artificial_Intelligence"
+ },
+ {
   "date": "2025-05-12",
   "category": "business",
   "impact": 3,
@@ -2537,6 +2549,17 @@
   "summary_en": "Anthropic agrees the largest copyright settlement to date over books used in training.",
   "summary_ar": "Anthropic توافق على أكبر تسوية لحقوق النشر حتى الآن بشأن كتب استُخدمت في التدريب.",
   "link": "https://en.wikipedia.org/wiki/Anthropic"
+ },
+ {
+  "date": "2025-09-09",
+  "category": "models",
+  "impact": 3,
+  "org": "MBZUAI · IFM · G42",
+  "title_en": "K2 Think, a compact open reasoning model",
+  "title_ar": "K2 Think، نموذج استدلال مفتوح ومدمج",
+  "summary_en": "IFM and G42 release a 32B-parameter open-source reasoning model, available on Hugging Face.",
+  "summary_ar": "معهد IFM وG42 يطلقان نموذج استدلال مفتوح المصدر بـ32 مليار معامل، متاحًا على Hugging Face.",
+  "link": "https://www.manilatimes.net/2025/09/09/tmt-newswire/pr-newswire/mbzuai-and-g42-launch-k2-think-a-leading-open-source-system-for-advanced-ai-reasoning/2181655"
  },
  {
   "date": "2025-09-29",
@@ -2764,12 +2787,12 @@
   "date": "2026-01-27",
   "category": "models",
   "impact": 3,
-  "org": "MBZUAI",
-  "link": "https://en.wikipedia.org/wiki/List_of_large_language_models",
+  "org": "MBZUAI · IFM · G42",
+  "link": "https://www.prnewswire.com/news-releases/mbzuai-launches-k2-think-v2-uaes-fully-sovereign-next-generation-reasoning-system-302671460.html",
   "title_en": "K2 Think V2",
   "title_ar": "K2 Think V2",
-  "summary_en": "MBZUAI releases K2 Think V2.",
-  "summary_ar": "جامعة MBZUAI تطلق K2 Think V2."
+  "summary_en": "MBZUAI's Institute of Foundation Models, G42 and Cerebras release a 70B-parameter open reasoning model built on IFM's K2-V2 base model, with its full training pipeline published.",
+  "summary_ar": "معهد النماذج الأساسية في جامعة MBZUAI وG42 وCerebras تطلق نموذج استدلال مفتوحًا بـ70 مليار معامل مبنيًا على نموذج K2-V2 الأساسي، مع نشر مسار تدريبه كاملًا."
  },
  {
   "date": "2026-02-02",
@@ -3134,6 +3157,17 @@
   "title_ar": "GPT-6 Astra",
   "summary_en": "OpenAI releases GPT-6 Astra.",
   "summary_ar": "OpenAI تطلق GPT-6 Astra."
+ },
+ {
+  "date": "2026-09-03",
+  "category": "models",
+  "impact": 4,
+  "org": "MBZUAI · IFM",
+  "title_en": "IFM releases K2 Horizon",
+  "title_ar": "معهد IFM يطلق K2 Horizon",
+  "summary_en": "Six fully open models from 375B down to 0.9B parameters, with weights, code, training data and methodology published.",
+  "summary_ar": "ستة نماذج مفتوحة بالكامل من 375 مليار إلى 0.9 مليار معامل، مع نشر الأوزان والشيفرة وبيانات التدريب والمنهجية.",
+  "link": "https://en.wikipedia.org/wiki/Mohamed_bin_Zayed_University_of_Artificial_Intelligence"
  },
  {
   "date": "2026-09-08",

@@ -8,7 +8,7 @@ export const ORG_ALIASES = { 'Google AI': 'Google', 'Google DeepMind': 'Google',
 export const orgsOf = (it) => it.org.split(' · ').map((o) => ORG_ALIASES[o] || o);
 
 const ORG_GROUPS = {
-  gulf: ['TII', 'MBZUAI', 'G42', 'UAE', 'Saudi Arabia'],
+  gulf: ['TII', 'MBZUAI', 'IFM', 'G42', 'UAE', 'Saudi Arabia'],
   northafrica: ['Morocco', 'Egypt', 'Nexus Core Systems', 'Hassan Allam Utilities', 'A15'],
   gov: ['EU', 'China', 'US', 'UK', 'Japan', 'France', 'Governments', 'Vatican', 'United Nations', 'UNESCO'],
   research: ['Academia', 'SRI', 'Bell Labs', 'Future of Life Institute', 'Nobel'],

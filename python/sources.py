@@ -11,6 +11,9 @@ keeps only AI-related items from general technology feeds.
 from urllib.parse import quote
 
 _GNEWS_AR_QUERY = quote("الذكاء الاصطناعي when:3d")
+# Gulf AI labs whose own sites block automated readers (MBZUAI, IFM, G42, TII, HUMAIN).
+_GNEWS_GULF_QUERY = quote('MBZUAI OR "Institute of Foundation Models" OR "K2 Think" OR "K2 Horizon" '
+                          'OR "G42" UAE OR Core42 OR "Technology Innovation Institute" OR HUMAIN when:7d')
 
 SOURCES = [
     # ── First-party labs ────────────────────────────────────────────────
@@ -45,6 +48,10 @@ SOURCES = [
      "url": "https://sifted.eu/feed", "ai_filter": True},
     {"id": "decoder", "name": "The Decoder", "lang": "en", "kind": "press", "hint": "models",
      "url": "https://the-decoder.com/feed/"},
+
+    {"id": "gnews-gulf", "name": "Google News · Gulf AI", "lang": "en", "kind": "aggregator", "hint": "business",
+     "url": f"https://news.google.com/rss/search?q={_GNEWS_GULF_QUERY}&hl=en-AE&gl=AE&ceid=AE:en",
+     "ai_filter": True, "max_items": 40},
 
     # ── Arabic ──────────────────────────────────────────────────────────
     {"id": "aitnews", "name": "البوابة التقنية", "lang": "ar", "kind": "press", "hint": "products",
