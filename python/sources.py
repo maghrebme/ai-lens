@@ -19,6 +19,8 @@ SOURCES = [
      "url": "https://deepmind.google/blog/rss.xml"},
     {"id": "google-ai", "name": "Google AI", "lang": "en", "kind": "lab", "hint": "products",
      "url": "https://blog.google/technology/ai/rss/"},
+    {"id": "mistral", "name": "Mistral AI", "lang": "en", "kind": "lab", "hint": "models",
+     "url": "https://mistral.ai/rss.xml"},
     {"id": "huggingface", "name": "Hugging Face", "lang": "en", "kind": "lab", "hint": "models",
      "url": "https://huggingface.co/blog/feed.xml"},
 
@@ -35,6 +37,8 @@ SOURCES = [
      "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed"},
     {"id": "mitnews", "name": "MIT News", "lang": "en", "kind": "press", "hint": "research",
      "url": "https://news.mit.edu/rss/topic/artificial-intelligence2"},
+    {"id": "sifted", "name": "Sifted", "lang": "en", "kind": "press", "hint": "business",
+     "url": "https://sifted.eu/feed", "ai_filter": True},
     {"id": "decoder", "name": "The Decoder", "lang": "en", "kind": "press", "hint": "models",
      "url": "https://the-decoder.com/feed/"},
 

@@ -3106,5 +3106,16 @@
   "title_ar": "Gemini 4 Argon",
   "summary_en": "Google DeepMind releases Gemini 4 Argon.",
   "summary_ar": "Google DeepMind تطلق Gemini 4 Argon."
+ },
+ {
+  "date": "2026-10-03",
+  "category": "models",
+  "impact": 4,
+  "org": "Aleph Alpha",
+  "link": "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/",
+  "title_en": "Aleph Alpha releases Kolibri",
+  "title_ar": "Aleph Alpha تطلق نموذج Kolibri",
+  "summary_en": "The German lab releases an open-weight English–German mixture-of-experts model with 78B parameters (3B active) and up to 1M tokens of context, under Apache 2.0.",
+  "summary_ar": "المختبر الألماني يطلق نموذجًا مفتوح الأوزان باللغتين الإنجليزية والألمانية بمعمارية خليط الخبراء، بـ78 مليار معامل (3 مليارات نشطة) وسياق يصل إلى مليون رمز، برخصة Apache 2.0."
  }
 ]
