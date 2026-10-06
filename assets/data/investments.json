@@ -1297,5 +1297,18 @@
   "summary_en": "A 200 MW facility with NVIDIA technology; a first 20 MW, $200 million phase by Vodafone Business, Elsewedy Electric and Cassava Technologies.",
   "summary_ar": "منشأة بقدرة 200 ميغاواط بتقنيات NVIDIA، تبدأ بمرحلة أولى بقدرة 20 ميغاواط وقيمة 200 مليون دولار تنفّذها Vodafone Business والسويدي إليكتريك وCassava Technologies.",
   "link": "https://www.arabnews.com/business/egypt-moves-to-build-1bn-ai-data-centre-with-nvidia-tech-3001048"
+ },
+ {
+  "date": "2026-09-15",
+  "type": "funding",
+  "org": "TypeSafe AI",
+  "region": "us",
+  "amount": 40000000.0,
+  "currency": "USD",
+  "title_en": "TypeSafe AI raises $40 million",
+  "title_ar": "TypeSafe AI تجمع 40 مليون دولار",
+  "summary_en": "Seed round led by DCVC, announced with the release of its Jev decision model.",
+  "summary_ar": "جولة تأسيسية بقيادة DCVC، أُعلنت مع إطلاق نموذج القرار Jev.",
+  "link": "https://en.wikipedia.org/wiki/Jev_(AI_model)"
  }
 ]

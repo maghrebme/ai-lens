@@ -3203,6 +3203,17 @@
   "summary_ar": "DeepSeek تطلق DeepSeek-V4.1-Flash."
  },
  {
+  "date": "2026-09-15",
+  "category": "models",
+  "impact": 4,
+  "org": "TypeSafe AI",
+  "title_en": "Jev opens the era of decision models",
+  "title_ar": "Jev يفتتح عصر نماذج القرار",
+  "summary_en": "TypeSafe AI releases Jev, a “System One” model that returns a choice with calibrated probabilities instead of generating text, answering in 70–500 ms at a fraction of an LLM's cost.",
+  "summary_ar": "TypeSafe AI تطلق Jev، نموذجًا من فئة «النظام الأول» يعيد قرارًا مع احتمالات معايَرة بدل توليد النص، ويجيب خلال 70–500 جزء من الثانية بجزء بسيط من كلفة النماذج اللغوية الكبيرة.",
+  "link": "https://en.wikipedia.org/wiki/Jev_(AI_model)"
+ },
+ {
   "date": "2026-09-22",
   "category": "models",
   "impact": 4,
@@ -3256,6 +3267,17 @@
   "title_ar": "Gemini 4 Argon",
   "summary_en": "Google DeepMind releases Gemini 4 Argon.",
   "summary_ar": "Google DeepMind تطلق Gemini 4 Argon."
+ },
+ {
+  "date": "2026-10-01",
+  "category": "models",
+  "impact": 3,
+  "org": "Amazon",
+  "title_en": "Amazon answers Jev with its own decision model",
+  "title_ar": "Amazon ترد على Jev بنموذج قرار خاص بها",
+  "summary_en": "Amazon releases an open decision model inspired by Jev, as developers adopt decision models for automation.",
+  "summary_ar": "Amazon تطلق نموذج قرار مفتوحًا مستلهمًا من Jev، مع تبنّي المطورين نماذج القرار في الأتمتة.",
+  "link": "https://techcrunch.com/2026/10/01/amazon-releases-its-own-jev-clone-as-decision-models-flood-the-web/"
  },
  {
   "date": "2026-10-03",
