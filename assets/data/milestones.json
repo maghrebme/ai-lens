@@ -3181,6 +3181,17 @@
   "summary_ar": "وكيل مستقل مصمَّم لإنجاز المهام الرقمية اليومية بشكل مستقل واستباقي."
  },
  {
+  "date": "2026-09-09",
+  "category": "models",
+  "impact": 3,
+  "org": "Suno",
+  "title_en": "Suno v6",
+  "title_ar": "Suno v6",
+  "summary_en": "The AI music maker launches its v6 family: the flagship v6, the experimental v6-wild and a faster v6-mini for all users.",
+  "summary_ar": "منصة توليد الموسيقى بالذكاء الاصطناعي تطلق عائلة v6: النموذج الرئيسي v6، والتجريبي v6-wild، ونموذجًا أسرع v6-mini متاحًا لجميع المستخدمين.",
+  "link": "https://en.wikipedia.org/wiki/Suno_AI"
+ },
+ {
   "date": "2026-09-10",
   "category": "models",
   "impact": 3,
@@ -3201,6 +3212,17 @@
   "title_ar": "GPT-6 Sol",
   "summary_en": "OpenAI releases GPT-6 Sol.",
   "summary_ar": "OpenAI تطلق GPT-6 Sol."
+ },
+ {
+  "date": "2026-09-28",
+  "category": "models",
+  "impact": 3,
+  "org": "ElevenLabs",
+  "title_en": "ElevenLabs releases Eleven v4",
+  "title_ar": "ElevenLabs تطلق Eleven v4",
+  "summary_en": "New speech models with more expression control and support for more than 90 languages, plus a low-latency v4 Turbo for real-time use.",
+  "summary_ar": "نماذج كلام جديدة بتحكم أكبر في التعبير ودعم لأكثر من 90 لغة، إضافة إلى v4 Turbo منخفض الكمون للاستخدام الفوري.",
+  "link": "https://techcrunch.com/2026/09/28/elevenlabs-new-v4-speech-model-supports-more-expression-control-and-90-languages/"
  },
  {
   "date": "2026-09-29",

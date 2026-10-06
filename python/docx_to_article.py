@@ -110,15 +110,14 @@ def render(path: str, lang: str) -> str:
 
     e = html.escape
     d = "rtl" if lang == "ar" else "ltr"
-    hidden = "" if lang == "ar" else " hidden"
     head_html = "\n".join(x for x in [
-        f'<header class="essay-head" lang="{lang}" dir="{d}" data-lang="{lang}"{hidden}>',
+        f'<header class="essay-head" lang="{lang}" dir="{d}" data-lang="{lang}">',
         f'  <h1>{e(head.get("h1", ""))}</h1>',
         f'  <p class="standfirst">{e(head.get("standfirst", ""))}</p>' if head.get("standfirst") else "",
         f'  <p class="ai-note">{e(head.get("note", ""))}</p>' if head.get("note") else "",
         "</header>"] if x)
     body_html = "\n".join(x for x in [
-        f'<div class="essay" lang="{lang}" dir="{d}" data-lang="{lang}"{hidden}>',
+        f'<div class="essay" lang="{lang}" dir="{d}" data-lang="{lang}">',
         '  <details class="essay-toc"><summary class="toc-title" data-i18n="contents"></summary><ol>',
         *[f"    {t}" for t in toc],
         "  </ol></details>",

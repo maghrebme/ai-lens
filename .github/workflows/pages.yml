@@ -10,6 +10,9 @@ on:
     # GitHub queues scheduled runs and can start them late at busy times;
     # use "Run workflow" in the Actions tab for an immediate refresh.
     - cron: "0 0,12 * * *"
+    # Backup run ~1.5 h later: GitHub sometimes delays, drops or cancels scheduled
+    # runs (no runner available). An extra refresh is harmless.
+    - cron: "37 1,13 * * *"
   workflow_dispatch:
 
 permissions:

@@ -428,7 +428,10 @@ main { padding: 0 var(--gutter); }
 .listen-note { margin: 10px 0 0; font-size: .78rem; color: var(--muted); }
 
 .essay { position: relative; max-width: var(--measure); margin: 0 auto; }
-/* Layout rules (grid) must not override the language switch. */
+/* Show only the text in the page language. boot.js sets <html lang> before the
+   first paint, so the other language never flashes; [hidden] is the JS fallback. */
+html[lang='ar'] .essay-page [data-lang='en'],
+html[lang='en'] .essay-page [data-lang='ar'],
 .essay-page [data-lang][hidden] { display: none !important; }
 .essay-body { font-size: 1.14rem; line-height: 1.85; }
 .essay[lang='en'] .essay-body { font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif; font-size: 1.2rem; line-height: 1.75; }
