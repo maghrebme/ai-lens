@@ -32,7 +32,7 @@
 
 | الصفحة | المحتوى |
 |---|---|
-| **الخط الزمني** | 293 محطة من عام 1843 حتى اليوم على خط متعرّج يبدأ من المستقبل في الأعلى وينتهي بالبدايات في الأسفل. بطاقات كاملة، وخط يمتلئ مع التمرير، وانتقال سريع بين العقود. تُضاف إطلاقات النماذج الكبرى تلقائيًا من موجزات المختبرات الرسمية. |
+| **الخط الزمني** | 294 محطة من عام 1843 حتى اليوم على خط متعرّج يبدأ من المستقبل في الأعلى وينتهي بالبدايات في الأسفل. بطاقات كاملة، وخط يمتلئ مع التمرير، وانتقال سريع بين العقود. تُضاف إطلاقات النماذج الكبرى تلقائيًا من موجزات المختبرات الرسمية. |
 | **الاستثمارات** | 93 صفقة من جولات التمويل والاستحواذات وصفقات البنية التحتية والبرامج الحكومية والطروحات العامة (2010 ← 2026) على مسار عمودي يبرز قيمة كل صفقة. |
 | **آخر الأخبار** | تغطية حيّة من 17 مصدرًا (مختبرات الذكاء الاصطناعي والصحافة التقنية العربية والعالمية) تُحدَّث تلقائيًا كل 12 ساعة، مجمّعة حسب اليوم على خط زمني عمودي. |
 | **خواطر** | مقالة بأسلوب المجلات حول أثر تسارع الذكاء الاصطناعي على قيمة المهارات البشرية، مع نقاش صوتي بالعربية والإنجليزية والفرنسية أُنتج باستخدام NotebookLM. |
@@ -110,7 +110,7 @@ The interface is **Arabic by default** with full English support, dark and light
 
 | Page | What it shows |
 |---|---|
-| **Timeline** (`index.html`) | 293 milestones from 1843 to today on a "snake" progress line, future at the top and origins at the bottom. Full cards, a line that fills as you scroll, and decade shortcuts. Major model launches from the labs' official feeds join it automatically. |
+| **Timeline** (`index.html`) | 294 milestones from 1843 to today on a "snake" progress line, future at the top and origins at the bottom. Full cards, a line that fills as you scroll, and decade shortcuts. Major model launches from the labs' official feeds join it automatically. |
 | **Investments** (`invest.html`) | 93 funding rounds, acquisitions, infrastructure deals, government programmes and IPOs (2010 → 2026) on a vertical track that puts each amount first. |
 | **Latest news** (`news.html`) | A live feed from 17 sources (AI labs, international and Arabic tech press), refreshed every 12 hours and grouped by day on a vertical timeline. |
 | **Reflections** (`reflections.html`) | A magazine-style essay on what accelerating AI means for the value of human skills, with an audio debate in Arabic, English and French produced with Google NotebookLM. |

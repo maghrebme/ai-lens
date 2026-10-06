@@ -3280,6 +3280,17 @@
   "link": "https://techcrunch.com/2026/10/01/amazon-releases-its-own-jev-clone-as-decision-models-flood-the-web/"
  },
  {
+  "date": "2026-10-01",
+  "category": "models",
+  "impact": 4,
+  "org": "Tavus",
+  "title_en": "Tavus Griffin passes a video Turing test",
+  "title_ar": "Griffin من Tavus يجتاز اختبار تورنغ بالفيديو",
+  "summary_en": "Tavus unveils Griffin, a “Human Interaction Model” that sees, hears, speaks and moves at once. In its blind study, 26 of 54 people (48%) believed they were on a video call with a real person.",
+  "summary_ar": "Tavus تكشف عن Griffin، «نموذج تفاعل بشري» يرى ويسمع ويتكلم ويتحرك في آن واحد. وفي دراستها العمياء ظن 26 من 54 مشاركًا (48%) أنهم في مكالمة فيديو مع شخص حقيقي.",
+  "link": "https://www.tavus.io/griffin"
+ },
+ {
   "date": "2026-10-03",
   "category": "models",
   "impact": 4,
