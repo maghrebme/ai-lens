@@ -285,6 +285,9 @@ main { padding: 0 var(--gutter); }
 .foot { margin-top: 40px; padding: 24px var(--gutter) 40px; border-top: 1px solid var(--line); font-size: .84rem; }
 .foot-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .foot p { margin: 8px 0 0; }
+.repo-link a { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.repo-link a:hover { color: var(--text); }
+.repo-link svg { width: 15px; height: 15px; flex: none; }
 
 
 /* ── sources & references dialog ────────────────────────── */
