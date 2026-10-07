@@ -3300,5 +3300,16 @@
   "title_ar": "Aleph Alpha تطلق نموذج Kolibri",
   "summary_en": "The German lab releases an open-weight English–German mixture-of-experts model with 78B parameters (3B active) and up to 1M tokens of context, under Apache 2.0.",
   "summary_ar": "المختبر الألماني يطلق نموذجًا مفتوح الأوزان باللغتين الإنجليزية والألمانية بمعمارية خليط الخبراء، بـ78 مليار معامل (3 مليارات نشطة) وسياق يصل إلى مليون رمز، برخصة Apache 2.0."
+ },
+ {
+  "date": "2026-10-05",
+  "category": "models",
+  "impact": 4,
+  "org": "Reflection AI",
+  "title_en": "Reflection unveils Beam, a 501B open-weight model",
+  "title_ar": "Reflection تكشف عن Beam، نموذج مفتوح الأوزان بـ501 مليار معامل",
+  "summary_en": "The lab's first frontier model: a mixture of experts with 501B parameters (23B active), trained on 23.8T tokens with up to 1M tokens of context. Reflection says it matches GLM-5.2 with 3–4× less inference compute; weights are due later in October under Apache 2.0.",
+  "summary_ar": "أول نموذج متقدم للمختبر: معمارية خليط الخبراء بـ501 مليار معامل (23 مليارًا نشطة)، دُرّب على 23.8 تريليون رمز بسياق يصل إلى مليون رمز. وتقول Reflection إنه يضاهي GLM-5.2 باستهلاك أقل بثلاث إلى أربع مرات في حوسبة الاستدلال، على أن تُنشر الأوزان لاحقًا في أكتوبر برخصة Apache 2.0.",
+  "link": "https://reflection.ai/blog/introducing-beam"
  }
 ]
