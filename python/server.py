@@ -62,7 +62,7 @@ DATA_PATH = _path(os.environ.get("DATA_PATH", "./data"))
 LOG_PATH = _path(os.environ.get("LOG_PATH", "./logs"))
 DEFAULT_LANG = os.environ.get("DEFAULT_LANG", "ar")
 REFRESH_MINUTES = max(5, int(os.environ.get("REFRESH_MINUTES", "720")))
-RETENTION_DAYS = max(1, int(os.environ.get("RETENTION_DAYS", "45")))
+RETENTION_DAYS = max(1, int(os.environ.get("RETENTION_DAYS", "4")))
 ENRICH_MODEL = os.environ.get("ENRICH_MODEL", "claude-opus-5-5")
 ENRICH_MAX = int(os.environ.get("ENRICH_MAX_PER_REFRESH", "120"))
 

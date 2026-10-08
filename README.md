@@ -156,7 +156,7 @@ The site builds to static files (`python python/build_static.py`). **GitHub Acti
 | `HOST` / `PORT` | `127.0.0.1` / `8420` | |
 | `BASE_PATH` | empty | set when served under a prefix, e.g. `/ai-lens` |
 | `DATA_PATH` / `LOG_PATH` | `./data` / `./logs` | |
-| `REFRESH_MINUTES` / `RETENTION_DAYS` | `720` (12 h) / `45` | |
+| `REFRESH_MINUTES` / `RETENTION_DAYS` | `720` (12 h) / `4` | |
 | `ENRICH`, `ENRICH_MODEL`, `ENRICH_MAX_PER_REFRESH` | `auto`, `claude-opus-5-5`, `120` | optional Claude translation |
 
 ### Project layout

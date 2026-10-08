@@ -65,7 +65,7 @@ def main() -> None:
 
     data_path = Path(os.environ.get("DATA_PATH", ROOT / "data"))
     data_path.mkdir(parents=True, exist_ok=True)
-    retention = int(os.environ.get("RETENTION_DAYS", "45"))
+    retention = int(os.environ.get("RETENTION_DAYS", "4"))
     enricher = make_enricher(os.environ.get("ENRICH_MODEL", "claude-opus-5-5"),
                              int(os.environ.get("ENRICH_MAX_PER_REFRESH", "120")))
 
