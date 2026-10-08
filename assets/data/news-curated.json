@@ -1,0 +1,14 @@
+[
+ {
+  "published": "2026-10-06T12:00:00Z",
+  "source_name": "WAM",
+  "url": "https://www.wam.ae/en/article/c2mg25j-tii-launches-falcon-emirati-alongside-new-arabic",
+  "title": "TII launches Falcon-Emirati alongside new Arabic AI models for speech and visual text understanding",
+  "summary": "Abu Dhabi's Technology Innovation Institute releases Falcon-Emirati, a 7B-parameter model built for Emirati Arabic that scores 84.83% on a native Emirati benchmark, plus Falcon-ASR (1.6B parameters, speech to text in six languages) and Falcon-OCR-Arabic for reading Arabic text in images and documents.",
+  "title_en": "TII launches Falcon-Emirati alongside new Arabic AI models",
+  "title_ar": "معهد الابتكار التكنولوجي يطلق «فالكون إماراتي» ونماذج ذكاء اصطناعي عربية جديدة",
+  "summary_en": "Abu Dhabi's Technology Innovation Institute releases Falcon-Emirati, a 7B-parameter model built for Emirati Arabic that scores 84.83% on a native Emirati benchmark, plus Falcon-ASR (1.6B parameters, speech to text in six languages) and Falcon-OCR-Arabic for reading Arabic text in images and documents.",
+  "summary_ar": "معهد الابتكار التكنولوجي في أبوظبي يطلق «فالكون إماراتي»، نموذجًا بـ7 مليارات معامل مصممًا للهجة الإماراتية حقق 84.83% في معيار إماراتي أصيل، إلى جانب Falcon-ASR (1.6 مليار معامل لتحويل الكلام إلى نص بست لغات) وFalcon-OCR-Arabic لاستخراج النص العربي من الصور والمستندات.",
+  "hint": "models"
+ }
+]

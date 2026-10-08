@@ -350,6 +350,31 @@ def parse_blog(src: dict, now: datetime) -> list[dict]:
     return out
 
 
+CURATED_FIELDS = ("title_ar", "title_en", "summary_ar", "summary_en")
+
+
+def parse_local(src: dict, now: datetime) -> list[dict]:
+    """Hand-picked stories from a JSON file in the repo, for outlets without a
+    usable feed. Each entry names its own outlet and may carry both languages."""
+    path = Path(__file__).resolve().parent.parent / src["url"]
+    out = []
+    for e in json.loads(path.read_text(encoding="utf-8")):
+        published = _parse_date(e["published"])
+        if not published:
+            continue
+        item = {
+            "id": hashlib.sha1(e["url"].encode("utf-8")).hexdigest()[:12],
+            "title": e["title"], "summary": truncate(e.get("summary", "")),
+            "url": e["url"], "image": e.get("image"),
+            "source": src["id"], "source_name": e.get("source_name", src["name"]), "source_kind": src["kind"],
+            "lang": e.get("lang", src["lang"]), "published": min(published, now).isoformat().replace("+00:00", "Z"),
+            "hint": e.get("hint", src.get("hint", "society")), "feed_tags": [],
+        }
+        item.update({k: e[k] for k in CURATED_FIELDS if isinstance(e.get(k), str)})
+        out.append(item)
+    return out
+
+
 def fetch_source(src: dict, now: datetime) -> tuple[str, list[dict], str | None]:
     """Fetch one source, retrying once: feeds occasionally return a bad response."""
     sid, items, err = _fetch_once(src, now)
@@ -361,6 +386,8 @@ def fetch_source(src: dict, now: datetime) -> tuple[str, list[dict], str | None]
 
 def _fetch_once(src: dict, now: datetime) -> tuple[str, list[dict], str | None]:
     try:
+        if src.get("format") == "local":
+            return src["id"], parse_local(src, now), None
         if src.get("format") == "blog":
             return src["id"], parse_blog(src, now), None
         data = _download(src["url"])
@@ -516,7 +543,8 @@ def build_view(raw: list[dict], enrichment: dict) -> list[dict]:
     for idx in range(len(raw)):
         groups.setdefault(find(idx), []).append(idx)
 
-    kind_rank = {"lab": 0, "press": 1, "aggregator": 2}
+    # A hand-picked story leads its cluster, so the chosen article is the one shown.
+    kind_rank = {"curated": -1, "lab": 0, "press": 1, "aggregator": 2}
     stories = []
     for members in groups.values():
         lead_idx = min(members, key=lambda m: (kind_rank.get(raw[m]["source_kind"], 3), times[m]))
@@ -527,7 +555,7 @@ def build_view(raw: list[dict], enrichment: dict) -> list[dict]:
         text = f"{lead['title']} {lead['summary']} {' '.join(lead.get('feed_tags', []))}"
         category = classify(text, lead.get("hint", "society"))
         impact = 2 + min(2, len(outlets) - 1)
-        if lead["source_kind"] == "lab":
+        if lead["source_kind"] in ("lab", "curated"):
             impact += 1
         if is_big(lead["title"]):
             impact += 1

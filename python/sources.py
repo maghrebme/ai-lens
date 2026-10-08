@@ -16,6 +16,9 @@ _GNEWS_GULF_QUERY = quote('MBZUAI OR "Institute of Foundation Models" OR "K2 Thi
                           'OR "G42" UAE OR Core42 OR "Technology Innovation Institute" OR HUMAIN when:7d')
 
 SOURCES = [
+    # ── Hand-picked stories (assets/data/news-curated.json) ──────────────
+    {"id": "curated", "name": "Ai-Lens picks", "lang": "en", "kind": "curated", "hint": "models",
+     "url": "assets/data/news-curated.json", "format": "local"},
     # ── First-party labs ────────────────────────────────────────────────
     {"id": "openai", "name": "OpenAI", "lang": "en", "kind": "lab", "hint": "models",
      "url": "https://openai.com/news/rss.xml"},

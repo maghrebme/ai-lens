@@ -81,6 +81,7 @@ echo 'ANTHROPIC_API_KEY=sk-ant-...' >> .env
 - المحطات: [assets/data/milestones.json](assets/data/milestones.json)
 - الاستثمارات: [assets/data/investments.json](assets/data/investments.json)
 - مصادر الأخبار: [python/sources.py](python/sources.py)
+- أخبار مختارة يدويًا لمواقع بلا موجز RSS: [assets/data/news-curated.json](assets/data/news-curated.json)
 
 ### شكر وتقدير
 
@@ -180,6 +181,8 @@ md-doc/                                  verification log and deployment guide
 ### Contributing
 
 Corrections and additions are welcome. **Every new milestone or deal must link to a source** that confirms the date (and the amount, for deals). Use `"precision": "month"` or `"year"` when the exact day isn't confirmed. Pull requests without a source will not be merged.
+
+Hand-picked news stories from outlets without a usable feed go in [assets/data/news-curated.json](assets/data/news-curated.json); like every story, they leave the feed after `RETENTION_DAYS`.
 
 ### Credits
 
