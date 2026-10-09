@@ -25,6 +25,27 @@ on demand. Each run:
 
 The site is then at `https://<your-user>.github.io/<repo>/` until a custom domain is set.
 
+**On-time refreshes with a Cloudflare Worker** (optional, free)
+
+GitHub starts scheduled runs late on the free tier, often by several hours. The Worker in
+`tools/cron-worker/` uses Cloudflare Cron Triggers, which fire on time, to start the workflow at
+00:00 and 12:00 UTC. GitHub's own schedule stays as a backup.
+
+1. On GitHub: **Settings → Developer settings → Personal access tokens → Fine-grained tokens →
+   Generate new token**. Repository access: **Only select repositories** → this repository.
+   Permissions: **Actions: Read and write** (nothing else). Copy the token.
+2. In `tools/cron-worker/`:
+
+   ```sh
+   npx wrangler login
+   npx wrangler deploy
+   npx wrangler secret put GITHUB_TOKEN    # paste the token
+   ```
+
+3. Check it in the Cloudflare dashboard: **Workers → ai-lens-cron → Settings → Trigger events**,
+   and its logs after the next run. The Worker has no public URL. When the token expires, create
+   a new one and run `wrangler secret put GITHUB_TOKEN` again.
+
 **Custom domain** (an apex domain such as `example.com`)
 1. At your DNS provider, point the domain to GitHub Pages. Add one record per address; most DNS
    panels reject several addresses in one field.

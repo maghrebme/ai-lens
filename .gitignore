@@ -13,3 +13,5 @@ __pycache__/
 /references/
 *.png
 !assets/**/*.png
+.wrangler/
+node_modules/

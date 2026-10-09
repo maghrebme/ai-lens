@@ -174,6 +174,7 @@ python/build_static.py                   static build for any static host
 python/docx_to_article.py                Word article → HTML for the Reflections page
 assets/audio/                            audio debates (AAC, 64 kbps mono)
 tools/                                   start / stop / setup scripts
+tools/cron-worker/                       Cloudflare Worker that starts the build on time
 .github/workflows/pages.yml              scheduled build and deploy
 md-doc/                                  verification log and deployment guide
 ```

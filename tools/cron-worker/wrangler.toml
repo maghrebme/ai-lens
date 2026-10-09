@@ -1,0 +1,13 @@
+name = "ai-lens-cron"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+# Cron triggers only: no public URL.
+workers_dev = false
+preview_urls = false
+
+[triggers]
+# 00:00 and 12:00 UTC (GMT).
+crons = ["0 0,12 * * *"]
+
+[observability]
+enabled = true
