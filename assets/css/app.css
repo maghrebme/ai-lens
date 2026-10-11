@@ -335,6 +335,7 @@ main { padding: 0 var(--gutter); }
 .news-deals a { display: flex; flex-direction: column; text-decoration: none; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: .92rem; }
 .news-deals a:hover span { color: var(--c-products); }
 .news-deals small { color: var(--muted); font-size: .74rem; }
+.big-deals .big-amt { color: var(--c-business); font-size: 1rem; font-variant-numeric: tabular-nums; }
 
 .track { --amt-w: 190px; --rail: 28px; position: relative; padding: 20px 0 40px; }
 .track::before {

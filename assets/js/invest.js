@@ -20,7 +20,7 @@ const view = { all: [], feeds: [], news: [], types: new Set(), regions: new Set(
 function money(n, cur) {
   if (state.lang === 'ar') {
     const num = new Intl.NumberFormat('ar-u-nu-latn', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
-    return `${num} ${{ EUR: 'يورو', MAD: 'درهم' }[cur] || 'دولار'}`;
+    return `${num} ${{ EUR: 'يورو', MAD: 'درهم', AED: 'درهم', GBP: 'جنيه إسترليني' }[cur] || 'دولار'}`;
   }
   return new Intl.NumberFormat('en-US', {
     style: 'currency', currency: cur || 'USD', notation: 'compact', maximumFractionDigits: 1,
@@ -45,8 +45,10 @@ async function load() {
   try {
     const doc = await loadNews();
     view.feeds = doc.sources || [];
-    const seen = new Set();
-    view.news = [...doc.items, ...doc.deals].filter((it) => !seen.has(it.id) && seen.add(it.id));
+    // Archived deals carry the amount read from the headline; merge them into the live copy.
+    const byId = new Map(doc.items.map((it) => [it.id, it]));
+    for (const d of doc.deals) byId.set(d.id, { ...byId.get(d.id), ...d });
+    view.news = [...byId.values()];
   } catch { /* the track works without the news server */ }
 }
 
@@ -115,6 +117,20 @@ function renderNewsDeals() {
   }).join('');
 }
 
+// Deals of $1B+ from the news archive, kept for good (see news.BIG_DEAL_USD).
+const CURRENCIES = ['USD', 'EUR', 'GBP', 'AED'];
+function renderBigDeals() {
+  const list = view.news.filter((n) => Number(n.amount_usd) >= 1e9 && CURRENCIES.includes(n.currency) && !newsHidden(n))
+    .sort((a, b) => b._t - a._t);
+  $('#bigDeals').hidden = !list.length;
+  $('#bigDealsList').innerHTML = list.map((n) => {
+    const t = (state.lang === 'ar' && n.title_ar) || (state.lang === 'en' && n.title_en) || n.title;
+    return `<li><a href="${esc(safeUrl(n.url))}" target="_blank" rel="noopener noreferrer"><b class="big-amt">${esc(money(Number(n.amount), n.currency))}</b>
+      <span dir="auto">${esc(t)}</span>
+      <small>${esc(n.source_name)} · ${esc(fmtDate(n._t, { day: 'numeric', month: 'short', year: 'numeric' }))}</small></a></li>`;
+  }).join('');
+}
+
 let renderTypeChips, renderRegionChips, sources;
 function buildFilters() {
   const count = (pred) => view.all.filter(pred).length;
@@ -129,7 +145,7 @@ function buildFilters() {
 
 async function boot() {
   initChrome('invest', (what) => {
-    if (what === 'lang') { renderTypeChips(); renderRegionChips(); render(); renderNewsDeals(); sources.refresh(); }
+    if (what === 'lang') { renderTypeChips(); renderRegionChips(); render(); renderNewsDeals(); renderBigDeals(); sources.refresh(); }
   });
   $('#count').textContent = T().loading;
   await load();
@@ -141,10 +157,11 @@ async function boot() {
       return Object.entries(counts).sort((x, y) => y[1] - x[1]).map(([name, count]) => ({ name, count }));
     },
     getFeeds: () => view.feeds,
-    onChange: () => { render(); renderNewsDeals(); },
+    onChange: () => { render(); renderNewsDeals(); renderBigDeals(); },
   });
   render();
   renderNewsDeals();
+  renderBigDeals();
   let qTimer;
   $('#search').addEventListener('input', (e) => {
     clearTimeout(qTimer);

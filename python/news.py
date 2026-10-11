@@ -431,6 +431,42 @@ ARCHIVE_FIELDS = ("id", "title", "summary", "url", "image", "source", "source_na
                   "published", "category", "impact", "echo", "title_ar", "title_en", "summary_ar", "summary_en")
 DEAL_DAYS = 30
 MAX_LAUNCHES = 1000
+BIG_DEAL_USD = 1e9  # deals at least this size stay in the archive for good
+
+_SCALE = {"t": 1e12, "trillion": 1e12, "تريليون": 1e12, "b": 1e9, "bn": 1e9, "billion": 1e9, "مليار": 1e9,
+          "m": 1e6, "mn": 1e6, "million": 1e6, "مليون": 1e6}
+_TO_USD = {"USD": 1.0, "EUR": 1.1, "GBP": 1.3, "AED": 0.27}  # rough, only to compare sizes
+_AMOUNT_RE = re.compile(
+    r"(?P<sym>[$€£])\s?(?P<n>\d+(?:[.,]\d+)?)\s?(?P<u>trillion|billion|million|bn|mn|[tbm])\b"
+    r"|(?P<n2>\d+(?:[.,]\d+)?)\s?(?P<u2>trillion|billion|million|تريليون|مليار|مليون)\s*"
+    r"(?P<cur>dollars?|euros?|pounds?|دولار|يورو|درهم|جنيه إسترليني)?", re.I)
+_VALUATION_AFTER = re.compile(r"\s*(valuation|market cap|كقيمة سوقية|تقييم)", re.I)
+_VALUATION_BEFORE = re.compile(r"(valued at|valuation of|valuation|at a|بتقييم|بقيمة سوقية|تقييمها|تقييم)\s*\S{0,3}\s*$", re.I)
+
+
+def deal_amount(text: str) -> tuple[float, str] | None:
+    """The largest money amount in a headline as (amount, currency), skipping
+    company valuations ("valued at $7.5B"), which are not the size of a deal."""
+    text = text.translate(str.maketrans("٠١٢٣٤٥٦٧٨٩٫", "0123456789."))
+    best = None
+    for m in _AMOUNT_RE.finditer(text):
+        if (_VALUATION_BEFORE.search(text[max(0, m.start() - 25):m.start()])
+                or _VALUATION_AFTER.match(text[m.end():m.end() + 20])):
+            continue
+        n = float((m["n"] or m["n2"]).replace(",", "."))
+        unit = (m["u"] or m["u2"]).lower()
+        if m["sym"]:
+            cur = {"$": "USD", "€": "EUR", "£": "GBP"}[m["sym"]]
+        else:
+            word = (m["cur"] or "").lower()
+            if not word:
+                continue  # "2 billion users" — a number, not money
+            cur = ("EUR" if word.startswith(("euro", "يورو")) else "GBP" if word.startswith(("pound", "جنيه"))
+                   else "AED" if word == "درهم" else "USD")
+        amount = n * _SCALE[unit]
+        if best is None or amount * _TO_USD[cur] > best[0] * _TO_USD[best[1]]:
+            best = (amount, cur)
+    return best
 
 
 class NewsStore:
@@ -514,10 +550,26 @@ class NewsStore:
                 self.archive["launches"][s["id"]] = slim
             heads = " ".join(s.get(k) or "" for k in ("title", "title_en", "title_ar"))
             if DEAL_RE.search(heads):
+                found = deal_amount(heads)
+                if found:
+                    slim["amount"], slim["currency"] = found
+                    slim["amount_usd"] = round(found[0] * _TO_USD[found[1]])
                 self.archive["deals"][s["id"]] = slim
+        # Small deals expire after DEAL_DAYS; big ones are kept as a reference.
+        # The same big deal reported again within two weeks is kept once (earliest report).
         cutoff = now - timedelta(days=DEAL_DAYS)
-        self.archive["deals"] = {k: v for k, v in self.archive["deals"].items()
-                                 if (_parse_date(v["published"]) or now) >= cutoff}
+        kept, big = {}, []
+        for v in sorted(self.archive["deals"].values(), key=lambda v: v["published"]):
+            t = _parse_date(v["published"]) or now
+            if v.get("amount_usd", 0) >= BIG_DEAL_USD:
+                if any(abs(v["amount_usd"] - b["amount_usd"]) <= 0.02 * b["amount_usd"]
+                       and abs((t - (_parse_date(b["published"]) or now)).days) <= 14 for b in big):
+                    continue
+                big.append(v)
+                kept[v["id"]] = v
+            elif t >= cutoff:
+                kept[v["id"]] = v
+        self.archive["deals"] = kept
         newest = sorted(self.archive["launches"].values(), key=lambda v: v["published"], reverse=True)
         self.archive["launches"] = {v["id"]: v for v in newest[:MAX_LAUNCHES]}
 
