@@ -91,7 +91,8 @@ CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 
        "base-uri 'self'; form-action 'none'; frame-ancestors 'none'")
 
 # Only these files are ever served from disk — never python/, data/, logs/ or .env.
-PUBLIC_FILES = {"/index.html", "/news.html", "/invest.html", "/reflections.html", "/philosophy.html", "/favicon.svg"}
+PUBLIC_FILES = {"/index.html", "/news.html", "/invest.html", "/reflections.html", "/philosophy.html", "/favicon.svg",
+                "/favicon.ico", "/manifest.webmanifest", "/sw.js"}
 ASSETS = (ROOT / "assets").resolve()
 
 
@@ -249,6 +250,8 @@ class Handler(SimpleHTTPRequestHandler):
             return "text/javascript; charset=utf-8"
         if str(path).endswith(".m4a"):
             return "audio/mp4"
+        if str(path).endswith(".webmanifest"):
+            return "application/manifest+json"
         return super().guess_type(path)
 
 

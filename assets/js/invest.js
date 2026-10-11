@@ -45,7 +45,8 @@ async function load() {
   try {
     const doc = await loadNews();
     view.feeds = doc.sources || [];
-    view.news = doc.items;
+    const seen = new Set();
+    view.news = [...doc.items, ...doc.deals].filter((it) => !seen.has(it.id) && seen.add(it.id));
   } catch { /* the track works without the news server */ }
 }
 
@@ -105,7 +106,7 @@ function renderNewsDeals() {
   const week = Date.now() - 7 * 86400e3;
   const list = view.news.filter((n) => n._t >= week && !newsHidden(n)
     && DEAL_WORDS.test(n.title_ar || '') + DEAL_WORDS.test(n.title_en || '') + DEAL_WORDS.test(n.title) > 0)
-    .slice(0, 8);
+    .sort((a, b) => b._t - a._t).slice(0, 8);
   $('#newsDeals').hidden = !list.length;
   $('#newsDealsList').innerHTML = list.map((n) => {
     const t = (state.lang === 'ar' && n.title_ar) || (state.lang === 'en' && n.title_en) || n.title;

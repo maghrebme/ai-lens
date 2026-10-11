@@ -30,7 +30,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from enrich import make_enricher  # noqa: E402
 from news import NewsStore  # noqa: E402
 
-PAGES = ["index.html", "news.html", "invest.html", "reflections.html", "philosophy.html", "favicon.svg"]
+PAGES = ["index.html", "news.html", "invest.html", "reflections.html", "philosophy.html", "favicon.svg",
+         "favicon.ico", "manifest.webmanifest", "sw.js"]
 
 
 def stamp_assets(out: Path) -> str:
@@ -46,6 +47,10 @@ def stamp_assets(out: Path) -> str:
         if f.is_file() and f.suffix in (".js", ".css", ".json"):
             digest.update(f.read_bytes())
     v = digest.hexdigest()[:10]
+    # A new service worker version on every deploy replaces the old offline cache.
+    sw = out / "sw.js"
+    sw.write_text(sw.read_text(encoding="utf-8").replace("const VERSION = 'dev';", f"const VERSION = '{v}';"),
+                  encoding="utf-8")
     for page in out.glob("*.html"):
         text = page.read_text(encoding="utf-8")
         text = re.sub(r'((?:src|href)="assets/(?:js|css)/[\w.-]+\.(?:js|css))"', rf'\1?v={v}"', text)

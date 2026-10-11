@@ -16,4 +16,8 @@
     root.lang = 'en';
     root.dir = 'ltr';
   }
+  // Installable app (manifest.webmanifest) with offline copies of visited pages.
+  if ('serviceWorker' in navigator) {
+    addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
 }());

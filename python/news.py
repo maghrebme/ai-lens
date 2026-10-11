@@ -423,8 +423,23 @@ def fetch_all() -> tuple[list[dict], dict]:
 # --------------------------------------------------------------------------
 
 
+# Funding and acquisition headlines, for the investments page (same words as invest.js).
+DEAL_RE = re.compile(r"\b(raises?|raised|funding round|valuation|valued at|acquires?|acquired|acquisition"
+                     r"|invests?|investment in|ipo|series [a-h])\b|جولة تمويل|تمويل|استحواذ|تستحوذ|يستحوذ"
+                     r"|تستثمر|يستثمر|طرح عام|بتقييم", re.I)
+ARCHIVE_FIELDS = ("id", "title", "summary", "url", "image", "source", "source_name", "source_kind", "lang",
+                  "published", "category", "impact", "echo", "title_ar", "title_en", "summary_ar", "summary_en")
+DEAL_DAYS = 30
+MAX_LAUNCHES = 1000
+
+
 class NewsStore:
-    """Rolling on-disk store of raw items plus a computed, clustered view."""
+    """Rolling on-disk store of raw items plus a computed, clustered view.
+
+    News expires after the retention period, but model launches (stories flagged
+    as milestones) and deal headlines are copied to an archive that outlives it,
+    so the timeline and investments pages keep them: launches indefinitely,
+    deals for DEAL_DAYS."""
 
     def __init__(self, data_path: Path, retention_days: int):
         self.path = data_path / "news.json"
@@ -435,6 +450,7 @@ class NewsStore:
         self.status: dict = {}
         self.updated_at: str | None = None
         self.view: list[dict] = []
+        self.archive: dict[str, dict[str, dict]] = {"launches": {}, "deals": {}}
         self._load()
 
     # ── persistence ────────────────────────────────────────────────────
@@ -450,12 +466,16 @@ class NewsStore:
         self.enrichment = doc.get("enrichment", {})
         self.status = doc.get("status", {})
         self.updated_at = doc.get("updated_at")
+        arch = doc.get("archive") or {}
+        self.archive = {k: {i["id"]: i for i in arch.get(k, []) if isinstance(i, dict) and "id" in i}
+                        for k in ("launches", "deals")}
         self.view = build_view(list(self.raw.values()), self.enrichment)
         log.info("loaded %d cached items (%d stories)", len(self.raw), len(self.view))
 
     def _save(self) -> None:
         doc = {"updated_at": self.updated_at, "status": self.status,
-               "items": list(self.raw.values()), "enrichment": self.enrichment}
+               "items": list(self.raw.values()), "enrichment": self.enrichment,
+               "archive": {k: list(v.values()) for k, v in self.archive.items()}}
         tmp = self.path.with_suffix(".tmp")
         tmp.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
         tmp.replace(self.path)
@@ -477,12 +497,29 @@ class NewsStore:
             self.status = status
             self.updated_at = now.isoformat().replace("+00:00", "Z")
             self.view = build_view(list(self.raw.values()), self.enrichment)
+            self._update_archive(now)
             self._save()
         log.info("refresh: %d fetched, %d stored, %d stories",
                  len(fetched), len(self.raw), len(self.view))
         if enricher is not None:
             self.enrich(enricher)
         return {"fetched": len(fetched), "stored": len(self.raw), "stories": len(self.view)}
+
+    def _update_archive(self, now: datetime) -> None:
+        """Copy launches and deal headlines from the current view (caller holds the lock).
+        A story already archived is refreshed, e.g. when it gains a translation."""
+        for s in self.view:
+            slim = {k: s[k] for k in ARCHIVE_FIELDS if k in s}
+            if s.get("milestone"):
+                self.archive["launches"][s["id"]] = slim
+            heads = " ".join(s.get(k) or "" for k in ("title", "title_en", "title_ar"))
+            if DEAL_RE.search(heads):
+                self.archive["deals"][s["id"]] = slim
+        cutoff = now - timedelta(days=DEAL_DAYS)
+        self.archive["deals"] = {k: v for k, v in self.archive["deals"].items()
+                                 if (_parse_date(v["published"]) or now) >= cutoff}
+        newest = sorted(self.archive["launches"].values(), key=lambda v: v["published"], reverse=True)
+        self.archive["launches"] = {v["id"]: v for v in newest[:MAX_LAUNCHES]}
 
     def enrich(self, enricher) -> None:
         with self.lock:
@@ -495,6 +532,7 @@ class NewsStore:
         with self.lock:
             self.enrichment.update(added)
             self.view = build_view(list(self.raw.values()), self.enrichment)
+            self._update_archive(datetime.now(timezone.utc))
             self._save()
         log.info("enriched %d stories", len(added))
 
@@ -506,8 +544,10 @@ class NewsStore:
                 items = [i for i in items if _parse_date(i["published"]) >= cutoff]
             sources = [{"id": s["id"], "name": s["name"], "lang": s["lang"], "kind": s["kind"], "url": s["url"],
                         **self.status.get(s["id"], {})} for s in SOURCES]
+            archive = {k: sorted(v.values(), key=lambda i: i["published"], reverse=True)
+                       for k, v in self.archive.items()}
             return {"updated_at": self.updated_at, "count": len(items),
-                    "items": items, "sources": sources}
+                    "items": items, "sources": sources, **archive}
 
 
 def build_view(raw: list[dict], enrichment: dict) -> list[dict]:

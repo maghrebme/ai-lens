@@ -517,3 +517,10 @@ html[lang='en'] .essay-page [data-lang='ar'],
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .stop.pre .mcard { opacity: 1; transform: none; }
 }
+
+
+/* ── installed app (home screen) ────────────────────────── */
+/* With viewport-fit=cover and a translucent status bar, keep content clear of
+   the notch and the home indicator. The insets are 0 in a normal browser tab. */
+body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.to-top { bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }

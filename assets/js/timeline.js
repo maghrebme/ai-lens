@@ -33,7 +33,9 @@ async function load() {
     const doc = await loadNews();
     view.feeds = doc.sources || [];
     // Launches the server flagged in the news feed join the timeline as "new".
-    live = doc.items.filter((it) => it.milestone).map((it) => ({
+    const seen = new Set();
+    live = [...doc.items.filter((it) => it.milestone), ...doc.launches]
+      .filter((it) => !seen.has(it.id) && seen.add(it.id)).map((it) => ({
       ...it, live: true, impact: Math.max(it.impact, 4), category: 'models',
       org: ORG_ALIASES[it.source_name] || it.source_name, link: it.url,
     }));

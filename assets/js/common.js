@@ -179,7 +179,11 @@ async function fetchJson(live, file) {
 
 export async function loadNews() {
   const doc = await fetchJson('api/news?days=45', 'api/news.json');
-  doc.items = doc.items.map((it) => ({ ...clean(it), _t: Date.parse(it.published) }));
+  const prep = (list) => (list || []).map((it) => ({ ...clean(it), _t: Date.parse(it.published) }));
+  doc.items = prep(doc.items);
+  // Launches and deal headlines kept after their news expires (see news.NewsStore).
+  doc.launches = prep(doc.launches);
+  doc.deals = prep(doc.deals);
   return doc;
 }
 export async function loadConfig() {
