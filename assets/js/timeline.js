@@ -42,10 +42,17 @@ async function load() {
   } catch { /* the timeline works without the news server */ }
   // Skip an auto-detected launch when the same event is already a curated milestone
   // (same link, or its curated title appears in the headline within a week).
+  // Also skip it when it shares two distinctive Latin-script words with a curated
+  // entry from the same week ("Muse Wonder" in an Arabic headline).
   const norm = (t) => (t || '').toLowerCase().replace(/[^\w.\- ]/g, ' ');
+  const COMMON = new Set(['the', 'and', 'for', 'with', 'from', 'new', 'its', 'first', 'model', 'models', 'introducing',
+    'launches', 'releases', 'frontier', 'open', 'weight', 'meta', 'google', 'openai', 'microsoft', 'anthropic']);
+  const words = (t) => new Set(norm(t).split(/\s+/).filter((w) => /^[a-z0-9][\w.-]{2,}$/.test(w) && !COMMON.has(w)));
+  const shared = (a, b) => { const B = words(b); return [...words(a)].filter((w) => B.has(w)).length; };
   live = live.filter((n) => !milestones.some((m) =>
     (m.link && n.url && m.link.replace(/\/$/, '') === n.url.replace(/\/$/, ''))
-    || (Math.abs(m._t - n._t) < 7 * 86400e3 && norm(n.title).includes(norm(m.title_en)))));
+    || (Math.abs(m._t - n._t) < 7 * 86400e3
+      && (norm(n.title).includes(norm(m.title_en)) || shared([n.title, n.title_en].join(' '), m.title_en) >= 2))));
   view.all = [...milestones, ...live].sort((a, b) => b._t - a._t);
 }
 

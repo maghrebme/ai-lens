@@ -33,6 +33,26 @@ SOURCES = [
      "post_pattern": r'href="(/en/blog/[a-z0-9-]{12,}/)"', "max_items": 8},
     {"id": "huggingface", "name": "Hugging Face", "lang": "en", "kind": "lab", "hint": "models",
      "url": "https://huggingface.co/blog/feed.xml"},
+    # Big players without RSS: their news pages are read like a blog index.
+    {"id": "anthropic", "name": "Anthropic", "lang": "en", "kind": "lab", "hint": "models",
+     "url": "https://www.anthropic.com/news", "format": "blog",
+     "post_pattern": r'href="(/(?:news/[a-z0-9-]{6,}|claude-[a-z0-9-]+))"', "max_items": 10},
+    {"id": "xai", "name": "xAI", "lang": "en", "kind": "lab", "hint": "models",
+     "url": "https://x.ai/news", "format": "blog",
+     "post_pattern": r'href="(/news/[a-z0-9-]{4,})"', "max_items": 8},
+    # Company newsrooms cover far more than AI, so only AI items are kept.
+    {"id": "meta", "name": "Meta", "lang": "en", "kind": "lab", "hint": "models",
+     "url": "https://about.fb.com/news/feed/", "ai_filter": True},
+    {"id": "microsoft", "name": "Microsoft", "lang": "en", "kind": "lab", "hint": "products",
+     "url": "https://blogs.microsoft.com/feed/", "ai_filter": True},
+    {"id": "microsoft-cto", "name": "Microsoft Command Line", "lang": "en", "kind": "lab", "hint": "models",
+     "url": "https://commandline.microsoft.com/feed/", "ai_filter": True},
+    {"id": "nvidia", "name": "NVIDIA", "lang": "en", "kind": "lab", "hint": "products",
+     "url": "https://blogs.nvidia.com/feed/", "ai_filter": True},
+    {"id": "amazon", "name": "Amazon", "lang": "en", "kind": "lab", "hint": "products",
+     "url": "https://www.aboutamazon.com/news/rss", "ai_filter": True},
+    {"id": "apple-ml", "name": "Apple Machine Learning", "lang": "en", "kind": "lab", "hint": "research",
+     "url": "https://machinelearning.apple.com/rss.xml"},
 
     # ── Press ───────────────────────────────────────────────────────────
     {"id": "techcrunch", "name": "TechCrunch", "lang": "en", "kind": "press", "hint": "business",

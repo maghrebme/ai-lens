@@ -94,13 +94,39 @@ BIG_KEYWORDS = [
 # A headline that announces a new named model ("Introducing GPT-6", "Gemini 4 is here").
 _RELEASE_VERB = re.compile(r"\b(introduc\w*|launch\w*|releas\w*|unveil\w*|announc\w*|meet|is here|now available)\b", re.I)
 _MODEL_NAME = re.compile(
-    r"\b(gpt|claude|gemini|gemma|llama|grok|sora|veo|imagen|o\d|qwen|deepseek|mistral|phi|glm|kimi|seedance)"
-    r"[\s-]?(\d+(\.\d+)?|opus|sonnet|haiku|pro|ultra|flash)\b", re.I)
+    r"\b(gpt|claude|gemini|gemma|llama|grok|sora|veo|imagen|o\d|qwen|deepseek|mistral|phi|glm|kimi|seedance"
+    r"|muse|nova|nemotron|mai|ernie|hunyuan|doubao|minimax)"
+    r"[\s-]?(\d+(\.\d+)?|opus|sonnet|haiku|pro|ultra|flash|wonder|spark|large|medium|small)\b", re.I)
+
+# Press stories: a launch by a major lab that many outlets cover counts as a milestone
+# even when the lab's own post is not in a followed feed (e.g. no RSS).
+_MAJOR_LABS = re.compile(
+    r"\b(openai|anthropic|google|deepmind|meta|microsoft|xai|nvidia|amazon|apple|mistral|deepseek|alibaba"
+    r"|qwen|moonshot|kimi|zhipu|z\.ai|baidu|bytedance|tencent|minimax)\b"
+    r"|أوبن ?إيه ?آي|أنثروبيك|جوجل|غوغل|ميتا|مايكروسوفت|إنفيديا|أمازون|آبل|أبل|ديب ?سيك|علي ?بابا|بايدو|تينسنت", re.I)
+_RELEASE_VERB_AR = re.compile(r"تطلق|يطلق|أطلقت|أطلق|تكشف عن|يكشف عن|تزيح الستار")
+_MODEL_WORD = re.compile(r"\bmodels?\b|\bllm\b|نموذج|نماذج", re.I)
+PRESS_MIN_OUTLETS = 4
 
 
 def is_release(title: str, source_kind: str) -> bool:
     """Heuristic for a major model launch worth a place on the main timeline."""
     return source_kind == "lab" and bool(_RELEASE_VERB.search(title)) and bool(_MODEL_NAME.search(title))
+
+
+def _model_names(story: dict) -> set[str]:
+    heads = [story["title"], story.get("title_en", ""), story.get("title_ar", "")]
+    return {re.sub(r"[\s-]+", " ", m.group(0).lower()) for h in heads if h for m in _MODEL_NAME.finditer(h)}
+
+
+def press_release(story: dict) -> bool:
+    """A major lab's model launch covered by at least PRESS_MIN_OUTLETS outlets."""
+    if story["echo"] < PRESS_MIN_OUTLETS:
+        return False
+    heads = [story["title"], story.get("title_en", ""), story.get("title_ar", "")]
+    heads += [r["title"] for r in story.get("related", [])]
+    return any(_MAJOR_LABS.search(h) and (_RELEASE_VERB.search(h) or _RELEASE_VERB_AR.search(h))
+               and (_MODEL_WORD.search(h) or _MODEL_NAME.search(h)) for h in heads if h)
 
 
 _INTRODUCING = re.compile(r"^(?:introducing|meet|announcing)\s+(.{2,40}?)(?:[:,—–-]|$)", re.I)
@@ -334,7 +360,7 @@ def parse_blog(src: dict, now: datetime) -> list[dict]:
     for path in links:
         url = urllib.parse.urljoin(f"{base.scheme}://{base.netloc}", path)
         page = _download(url).decode("utf-8", "replace")
-        t = re.search(r'<time[^>]+datetime=["\']([^"\']+)', page)
+        t = re.search(r'<time[^>]+datetime=["\']([^"\']+)', page, re.I)
         title = _meta(page, "og:title").split(" — ")[0].strip()
         published = _parse_date(t.group(1)) if t else None
         if not title or not published:
@@ -674,6 +700,16 @@ def build_view(raw: list[dict], enrichment: dict) -> list[dict]:
         stories.append(lead)
     for s in stories:
         if not s["milestone"] and widely_covered(s, stories):
+            s["milestone"] = True
+    # Press coverage only flags a launch the labs' own posts have not already
+    # flagged (same model name within a week), so it appears once.
+    for s in stories:
+        if s["milestone"] or not press_release(s):
+            continue
+        names = _model_names(s)
+        t0 = _parse_date(s["published"])
+        if not any(o["milestone"] and names & _model_names(o)
+                   and abs((_parse_date(o["published"]) - t0).days) <= 7 for o in stories):
             s["milestone"] = True
     stories.sort(key=lambda s: s["published"], reverse=True)
     return stories
