@@ -3287,8 +3287,8 @@
   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
   "title_en": "Gemini 4 Argon",
   "title_ar": "Gemini 4 Argon",
-  "summary_en": "Google's new frontier model for software engineering, enterprise work and cyber defence, with up to 1M tokens of output (from 64K). It first went to trusted cyber defenders, then opened to developers and Gemini Pro and Ultra subscribers on 13 October.",
-  "summary_ar": "نموذج Google المتقدم الجديد لهندسة البرمجيات وأعمال المؤسسات والدفاع السيبراني، بمخرجات تصل إلى مليون رمز (بدل 64 ألفًا). أُتيح أولًا لخبراء أمن سيبراني موثوقين، ثم للمطورين ومشتركي Gemini Pro وUltra في 13 أكتوبر."
+  "summary_en": "Google's new frontier model for software engineering, enterprise work and cyber defence, with up to 1M tokens of output (from 64K). It first went to trusted cyber defenders through Google's Fairwind Program.",
+  "summary_ar": "نموذج Google المتقدم الجديد لهندسة البرمجيات وأعمال المؤسسات والدفاع السيبراني، بمخرجات تصل إلى مليون رمز (بدل 64 ألفًا). أُتيح أولًا لخبراء أمن سيبراني موثوقين عبر برنامج Fairwind من Google."
  },
  {
   "date": "2026-10-01",
@@ -3388,5 +3388,16 @@
   "summary_en": "Meta's most capable models so far, built for agents. Muse Wonder is on the Meta Model API; Wonder Full is limited to Muse Code subscribers. The weights are not released, a break from the open Llama era.",
   "summary_ar": "أقوى نماذج ميتا حتى الآن، مصممة للوكلاء. يتوفر Muse Wonder عبر واجهة Meta البرمجية، ويقتصر Wonder Full على مشتركي Muse Code. لم تُنشر الأوزان، في قطيعة مع عهد Llama المفتوح.",
   "link": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+ },
+ {
+  "date": "2026-10-13",
+  "category": "products",
+  "impact": 3,
+  "org": "Google",
+  "title_en": "Gemini 4 Argon opens to developers and the Gemini app",
+  "title_ar": "Gemini 4 Argon يُتاح للمطورين وفي تطبيق Gemini",
+  "summary_en": "Argon reaches the Gemini API and Google AI Pro and Ultra subscribers. The Gemini app gains a tasks mode that keeps working while you're away, links to more than 40 apps such as Instacart, OpenTable and Shopify, and brings Antigravity's coding agent to the macOS app.",
+  "summary_ar": "Argon يصل إلى واجهة Gemini البرمجية وإلى مشتركي Google AI Pro وUltra. ويضيف تطبيق Gemini وضع «المهام» الذي يواصل العمل في غيابك، وربطًا بأكثر من 40 تطبيقًا مثل Instacart وOpenTable وShopify، ووكيل البرمجة من Antigravity في تطبيق macOS.",
+  "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"
  }
 ]
