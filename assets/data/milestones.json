@@ -3284,11 +3284,11 @@
   "category": "models",
   "impact": 4,
   "org": "Google",
-  "link": "https://en.wikipedia.org/wiki/List_of_large_language_models",
+  "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
   "title_en": "Gemini 4 Argon",
   "title_ar": "Gemini 4 Argon",
-  "summary_en": "Google DeepMind releases Gemini 4 Argon.",
-  "summary_ar": "Google DeepMind تطلق Gemini 4 Argon."
+  "summary_en": "Google's new frontier model for software engineering, enterprise work and cyber defence, with up to 1M tokens of output (from 64K). It first went to trusted cyber defenders, then opened to developers and Gemini Pro and Ultra subscribers on 13 October.",
+  "summary_ar": "نموذج Google المتقدم الجديد لهندسة البرمجيات وأعمال المؤسسات والدفاع السيبراني، بمخرجات تصل إلى مليون رمز (بدل 64 ألفًا). أُتيح أولًا لخبراء أمن سيبراني موثوقين، ثم للمطورين ومشتركي Gemini Pro وUltra في 13 أكتوبر."
  },
  {
   "date": "2026-10-01",
