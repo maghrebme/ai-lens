@@ -74,6 +74,8 @@ echo 'ANTHROPIC_API_KEY=sk-ant-...' >> .env
 
 يُبنى الموقع كملفات ثابتة، ويعيد **GitHub Actions** بناءه ونشره على **GitHub Pages** كل 12 ساعة، **مجانًا** للمستودعات العامة. التفاصيل وإعداد نطاق خاص في [md-doc/deploy.md](md-doc/deploy.md).
 
+**اختياري — فحص أسبوعي بمساعدة Claude:** كل يوم اثنين يبحث Claude في إعلانات الأسبوع، ويتحقق من كل منها في مصدرها الرسمي، ثم يفتح طلب دمج (Pull Request) بالمحطات والصفقات الجديدة لتراجعها قبل نشرها. يعمل بمفتاح Anthropic API الخاص بك ويُحتسب حسب الاستخدام. خطوات الإعداد في [md-doc/deploy.md](md-doc/deploy.md).
+
 ### المساهمة
 
 نرحّب بالتصحيحات والإضافات. **كل محطة أو صفقة جديدة يجب أن ترفق رابطًا لمصدر** يؤكد التاريخ (والمبلغ للصفقات). استخدم `"precision": "month"` أو `"year"` حين لا يتأكد اليوم.
@@ -149,6 +151,8 @@ echo 'ANTHROPIC_API_KEY=sk-ant-...' >> .env
 
 The site builds to static files (`python python/build_static.py`). **GitHub Actions** rebuilds and publishes it to **GitHub Pages** every 12 hours, **free** for public repositories. See [md-doc/deploy.md](md-doc/deploy.md) for setup and using your own domain.
 
+**Optional: a weekly check with Claude.** Every Monday, Claude searches the week's AI announcements, verifies each one on its official source, and opens a pull request with the new milestones and deals for you to review before anything is published. It runs on your own Anthropic API key, billed per use. Setup is in [md-doc/deploy.md](md-doc/deploy.md).
+
 ### Configuration
 
 | Variable | Default | |
@@ -170,6 +174,7 @@ assets/fonts/                            IBM Plex Sans Arabic (SIL OFL 1.1)
 python/server.py                         local server with scheduled refresh
 python/news.py · sources.py              feed fetching, classification, clustering
 python/enrich.py                         optional Claude translation
+python/weekly_milestones.py              weekly check for new milestones, verified with Claude
 python/build_static.py                   static build for any static host
 python/docx_to_article.py                Word article → HTML for the Reflections page
 assets/audio/                            audio debates (AAC, 64 kbps mono)

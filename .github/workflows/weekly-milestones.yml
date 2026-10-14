@@ -1,0 +1,72 @@
+# Weekly check for new AI milestones and big deals, verified with Claude.
+# Opens a pull request for review; nothing is published until it is merged.
+#
+# Needs a repository secret ANTHROPIC_API_KEY (billed per use on your Anthropic
+# account) and Settings → Actions → General → "Allow GitHub Actions to create and
+# approve pull requests". Without the key the run is skipped.
+name: Weekly milestones
+
+on:
+  schedule:
+    - cron: "0 4 * * 1"   # Mondays 04:00 UTC; a late start doesn't matter for a weekly check
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-milestones
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+    steps:
+      - name: Skip without an API key
+        if: env.HAS_ANTHROPIC_KEY != 'true'
+        run: echo "::notice::Add an ANTHROPIC_API_KEY repository secret to enable the weekly check."
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: env.HAS_ANTHROPIC_KEY == 'true'
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        if: env.HAS_ANTHROPIC_KEY == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Install the Anthropic SDK
+        if: env.HAS_ANTHROPIC_KEY == 'true'
+        run: pip install -r python/requirements.txt
+
+      - name: Find and verify announcements
+        if: env.HAS_ANTHROPIC_KEY == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PR_BODY: ${{ runner.temp }}/pr-body.md
+        run: python python/weekly_milestones.py
+
+      - name: Open a pull request
+        if: env.HAS_ANTHROPIC_KEY == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_BODY: ${{ runner.temp }}/pr-body.md
+        run: |
+          if git diff --quiet; then
+            echo "::notice::Nothing new passed verification this week."
+            exit 0
+          fi
+          branch="weekly/milestones-$(date -u +%F)-${GITHUB_RUN_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add assets/data/milestones.json assets/data/investments.json README.md
+          git commit -m "Weekly milestones: $(date -u +%F)"
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${auth}" push origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Weekly milestones: $(date -u +%F)" --body-file "$PR_BODY"

@@ -28,8 +28,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Claude translation runs only when the repository secret is set.
-      HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+      # Claude translation of headlines runs only when the ANTHROPIC_API_KEY secret is set
+      # AND the repository variable ENRICH_NEWS is "true" (it is billed per use). The key
+      # alone only enables the weekly milestone check (weekly-milestones.yml).
+      HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' && vars.ENRICH_NEWS == 'true' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

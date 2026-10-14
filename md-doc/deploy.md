@@ -46,6 +46,25 @@ GitHub starts scheduled runs late on the free tier, often by several hours. The 
    and its logs after the next run. The Worker has no public URL. When the token expires, create
    a new one and run `wrangler secret put GITHUB_TOKEN` again.
 
+**Weekly milestone check with Claude** (optional, uses your Anthropic API key)
+
+`.github/workflows/weekly-milestones.yml` runs `python/weekly_milestones.py` every Monday. Claude
+searches the past week's AI announcements, verifies each one on the official source, and the
+workflow opens a pull request adding the verified milestones (and deals of USD 1 billion or more)
+to `assets/data/`. Nothing is published until you review and merge it. It runs on the Anthropic
+API, billed per use to your own account; one run typically costs a few US dollars.
+
+1. Create an API key at [console.anthropic.com](https://console.anthropic.com) (set a monthly
+   spend limit there if you like).
+2. **Settings → Secrets and variables → Actions → New repository secret** `ANTHROPIC_API_KEY`.
+3. **Settings → Actions → General → Workflow permissions:** tick **Allow GitHub Actions to create
+   and approve pull requests**.
+4. Optional: run it now from **Actions → Weekly milestones → Run workflow**.
+
+The same key can also translate every news headline into Arabic and English. That is off by
+default because it runs at every build: to turn it on, add a repository **variable**
+(not a secret) `ENRICH_NEWS` = `true`.
+
 **Custom domain** (an apex domain such as `example.com`)
 1. At your DNS provider, point the domain to GitHub Pages. Add one record per address; most DNS
    panels reject several addresses in one field.
