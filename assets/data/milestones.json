@@ -3357,6 +3357,17 @@
   "link": "https://www.anthropic.com/claude-haiku-5-5"
  },
  {
+  "date": "2026-10-07",
+  "category": "products",
+  "impact": 3,
+  "org": "OpenAI",
+  "title_en": "ChatGPT gains Intelligent UI as GPT-6 reaches all users",
+  "title_ar": "ChatGPT يحصل على Intelligent UI مع وصول GPT-6 إلى جميع المستخدمين",
+  "summary_en": "OpenAI says GPT-6 is coming to everyone who uses ChatGPT, alongside Intelligent UI, which lets answers include interactive charts, maps, forms and small tools, and a feature that lets ChatGPT start answering before it finishes reasoning.",
+  "summary_ar": "تقول OpenAI إن GPT-6 أصبح متاحاً لجميع مستخدمي ChatGPT، إلى جانب ميزة Intelligent UI التي تتيح إجابات تتضمن رسوماً بيانية وخرائط ونماذج وأدوات صغيرة تفاعلية، وميزة تتيح لـ ChatGPT بدء الإجابة قبل إنهاء التفكير.",
+  "link": "https://openai.com/index/gpt-6-for-everyone/"
+ },
+ {
   "date": "2026-10-08",
   "category": "products",
   "impact": 3,
@@ -3366,6 +3377,17 @@
   "summary_en": "A “universal agent for work” for enterprises: from a single prompt it plans the task, uses tools and connects to business systems to return finished work.",
   "summary_ar": "«وكيل شامل للعمل» موجّه للمؤسسات: من طلب واحد يخطط للمهمة ويستخدم الأدوات ويتصل بأنظمة الأعمال ليعيد عملًا منجزًا.",
   "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-at-work/"
+ },
+ {
+  "date": "2026-10-08",
+  "category": "business",
+  "impact": 2,
+  "org": "Anthropic",
+  "title_en": "Anthropic launches the Anthropic Cyber Mission",
+  "title_ar": "Anthropic تطلق مبادرة Anthropic Cyber Mission",
+  "summary_en": "Anthropic says its Cyber Mission combines a Critical Infrastructure Defense Program, which brings Claude and on-site engineers to firms protecting power, water and transport systems, with free OSS Scanner security scans for open-source projects.",
+  "summary_ar": "تقول Anthropic إن مبادرتها Cyber Mission تجمع بين برنامج للدفاع عن البنية التحتية الحيوية يوفّر نماذج Claude ومهندسين ميدانيين للشركات التي تحمي أنظمة الطاقة والمياه والنقل، وأداة OSS Scanner لفحص أمني مجاني لمشاريع المصدر المفتوح.",
+  "link": "https://www.anthropic.com/news/anthropic-cyber-mission"
  },
  {
   "date": "2026-10-09",
