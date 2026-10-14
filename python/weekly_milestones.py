@@ -131,49 +131,140 @@ SCHEMA = {
     "additionalProperties": False,
 }
 
+# ── cost control ───────────────────────────────────────────────────────────
+# Every run stays under MAX_USD (default $2). The API has no per-call spending cap,
+# so each research request is kept small enough that its worst case is known:
+# at most 10 server-tool iterations per request (then the API pauses), web_fetch
+# text capped at FETCH_TOKENS per page. Before each further request the script
+# checks that spent + WORST_REQUEST_USD + RESERVE_USD still fits; otherwise it
+# stops searching and writes the report from what it gathered.
+MAX_USD = float(os.environ.get("WEEKLY_MAX_USD", "2.0"))
+FETCH_TOKENS = 3000
+WORST_REQUEST_USD = 0.90   # ~10 iterations re-reading a context of up to ~35K tokens, plus output
+RESERVE_USD = 0.60         # the wrap-up report and the extraction call
+MAX_REQUESTS = 6
+WEB_SEARCH_USD = 0.01      # $10 per 1,000 searches
+# $ per million tokens: input, output, cache read, cache write (5-minute).
+PRICES = {
+    "claude-opus-5-5": (4.0, 20.0, 0.20, 5.0),
+    "claude-opus-5": (5.0, 25.0, 0.50, 6.25),
+    "claude-sonnet-5-5": (2.0, 10.0, 0.20, 2.5),
+}
+PRICE_UNKNOWN = (10.0, 50.0, 1.0, 12.5)  # a fallback model we don't list: assume the dearest tier
+
 TOOLS = [
-    {"type": "web_search_20260209", "name": "web_search", "max_uses": 40},
-    {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 60},
+    {"type": "web_search_20260209", "name": "web_search", "max_uses": 8},
+    {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 10, "max_content_tokens": FETCH_TOKENS},
 ]
 FALLBACK = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
-MAX_CONTINUATIONS = 8
+
+
+class Budget:
+    def __init__(self, limit: float):
+        self.limit, self.spent = limit, 0.0
+
+    def add(self, resp, label: str) -> float:
+        u = resp.usage
+        p_in, p_out, p_read, p_write = PRICES.get(resp.model, PRICE_UNKNOWN)
+        searches = getattr(getattr(u, "server_tool_use", None), "web_search_requests", 0) or 0
+        cost = ((u.input_tokens or 0) * p_in + (u.output_tokens or 0) * p_out
+                + (getattr(u, "cache_read_input_tokens", 0) or 0) * p_read
+                + (getattr(u, "cache_creation_input_tokens", 0) or 0) * p_write) / 1e6 + searches * WEB_SEARCH_USD
+        self.spent += cost
+        log.info("%s: $%.3f (model %s, in %s, out %s, cache read %s, searches %s) — total $%.3f of $%.2f",
+                 label, cost, resp.model, u.input_tokens, u.output_tokens,
+                 getattr(u, "cache_read_input_tokens", 0), searches, self.spent, self.limit)
+        if self.spent > self.limit:
+            raise RuntimeError(f"spending limit exceeded: ${self.spent:.2f} > ${self.limit:.2f}")
+        return cost
+
+    def room_for(self, amount: float) -> bool:
+        return self.spent + amount <= self.limit
+
+
+def _gathered(content: list) -> str:
+    """Plain-text digest of what the research turn read: the model's notes plus the
+    URL, title and text of each fetched page and search hit."""
+    out: list[str] = []
+
+    def walk(node, depth=0):
+        if isinstance(node, dict):
+            url, title = node.get("url"), node.get("title")
+            if url and (title or node.get("page_age")):
+                out.append(f"- {title or ''} <{url}> {node.get('page_age') or ''}".strip())
+            for key in ("data", "text"):
+                if isinstance(node.get(key), str) and len(node[key]) > 200 and depth > 0:
+                    out.append(node[key][:FETCH_TOKENS * 4])
+            for v in node.values():
+                if isinstance(v, (dict, list)):
+                    walk(v, depth + 1)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v, depth + 1)
+
+    for block in content:
+        if block.type == "text" and block.text.strip():
+            out.append(block.text.strip())
+        elif block.type.endswith("_tool_result"):
+            walk(block.to_dict())
+    return "\n".join(out)[:240_000]
 
 
 # ── Claude calls ───────────────────────────────────────────────────────────
-def research(client: anthropic.Anthropic, start: date, end: date, existing: str) -> str:
-    """Agentic research turn with server-side web tools; returns the report text."""
+def research(client: anthropic.Anthropic, budget: Budget, start: date, end: date, existing: str) -> str:
+    """Agentic research with server-side web tools, within the budget; returns the report."""
     system = (RESEARCH_SYSTEM.replace("{start}", start.isoformat()).replace("{end}", end.isoformat())
               .replace("{existing}", existing))
     task = {"role": "user", "content": f"Today is {end.isoformat()}. Research and verify this week's announcements, "
-                                       "then write the report."}
+                                       "then write the report. You have a limited number of searches and page "
+                                       "fetches: start with broad searches and release trackers, and fetch only "
+                                       "official pages of likely candidates."}
     content: list = []
-    for _ in range(MAX_CONTINUATIONS):
+    finished = False
+    for i in range(MAX_REQUESTS):
+        if i and not budget.room_for(WORST_REQUEST_USD + RESERVE_USD):
+            log.info("budget: stopping the search after %d requests", i)
+            break
         messages = [task] + ([{"role": "assistant", "content": content}] if content else [])
         with client.beta.messages.stream(
-            model=MODEL, max_tokens=64000, system=system, tools=TOOLS, messages=messages,
-            output_config={"effort": "high"}, **FALLBACK,
+            model=MODEL, max_tokens=32000, system=system, tools=TOOLS, messages=messages,
+            output_config={"effort": "medium"}, cache_control={"type": "ephemeral"}, **FALLBACK,
         ) as stream:
             resp = stream.get_final_message()
+        budget.add(resp, f"research request {i + 1}")
         content += resp.content
-        log.info("research: stop_reason=%s, usage=%s", resp.stop_reason, resp.usage)
         if resp.stop_reason == "refusal":
             raise RuntimeError(f"research declined: {getattr(resp, 'stop_details', None)}")
         if resp.stop_reason != "pause_turn":  # long server-tool turns pause; resend to continue
+            finished = True
             break
-    report = "\n".join(b.text for b in content if b.type == "text").strip()
-    if not report:
+    report = "\n".join(b.text for b in content if b.type == "text").strip() if finished else ""
+    if finished and report:
+        return report
+    # Out of budget (or no report): write it from what was gathered, without tools.
+    resp = client.beta.messages.create(
+        model=MODEL, max_tokens=16000, system=system,
+        messages=[{"role": "user", "content": "The search budget is used up. Below is everything you found. "
+                   "Write the report now, from these sources only: verified items first, then rejected "
+                   "candidates. Leave out anything these sources do not confirm.\n\n" + _gathered(content)}],
+        output_config={"effort": "medium"}, **FALLBACK,
+    )
+    budget.add(resp, "report")
+    report = "\n".join(b.text for b in resp.content if b.type == "text").strip()
+    if resp.stop_reason == "refusal" or not report:
         raise RuntimeError("research returned no report")
     return report
 
 
-def extract(client: anthropic.Anthropic, report: str) -> dict:
+def extract(client: anthropic.Anthropic, budget: Budget, report: str) -> dict:
     """Turn the report into schema-valid entries (no tools, structured output)."""
     resp = client.beta.messages.create(
-        model=MODEL, max_tokens=32000, system=EXTRACT_SYSTEM,
+        model=MODEL, max_tokens=16000, system=EXTRACT_SYSTEM,
         messages=[{"role": "user", "content": report}],
-        output_config={"effort": "medium", "format": {"type": "json_schema", "schema": SCHEMA}},
+        output_config={"effort": "low", "format": {"type": "json_schema", "schema": SCHEMA}},
         **FALLBACK,
     )
+    budget.add(resp, "extraction")
     if resp.stop_reason == "refusal":
         raise RuntimeError(f"extraction declined: {getattr(resp, 'stop_details', None)}")
     if resp.stop_reason == "max_tokens":
@@ -270,9 +361,9 @@ def _existing_summary(milestones: list[dict], deals: list[dict], since: date) ->
 
 
 def _pr_body(added_m: list[dict], added_d: list[dict], skipped: list[tuple[str, str]],
-             rejected: list[dict], start: date, end: date) -> str:
+             rejected: list[dict], start: date, end: date, cost: float) -> str:
     lines = [f"Weekly check of AI announcements from {start} to {end}, verified against official sources "
-             f"by `{MODEL}` (`python/weekly_milestones.py`).", "",
+             f"by `{MODEL}` (`python/weekly_milestones.py`). API cost of this run: ${cost:.2f}.", "",
              "**Please review each entry and its source before merging.** Nothing is published until this "
              "pull request is merged.", ""]
     if added_m:
@@ -308,9 +399,11 @@ def main() -> int:
     deals = json.loads(INVESTMENTS.read_text(encoding="utf-8"))
 
     client = anthropic.Anthropic()
-    report = research(client, start, end, _existing_summary(milestones, deals, start - timedelta(days=45)))
+    budget = Budget(MAX_USD)
+    report = research(client, budget, start, end, _existing_summary(milestones, deals, start - timedelta(days=45)))
     log.info("report:\n%s", report)
-    found = extract(client, report)
+    found = extract(client, budget, report)
+    log.info("total cost: $%.3f (limit $%.2f)", budget.spent, budget.limit)
 
     added_m, added_d, skipped = [], [], []
     for e in found["milestones"]:
@@ -332,7 +425,7 @@ def main() -> int:
         _insert(deals, entry)
         added_d.append(entry)
 
-    body = _pr_body(added_m, added_d, skipped, found["rejected"], start, end)
+    body = _pr_body(added_m, added_d, skipped, found["rejected"], start, end, budget.spent)
     print(body)
     if args.dry_run or not (added_m or added_d):
         log.info("no files changed (%s)", "dry run" if args.dry_run else "nothing new")
