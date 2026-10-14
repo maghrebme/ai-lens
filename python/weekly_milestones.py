@@ -140,9 +140,11 @@ SCHEMA = {
 # stops searching and writes the report from what it gathered.
 MAX_USD = float(os.environ.get("WEEKLY_MAX_USD", "2.0"))
 FETCH_TOKENS = 3000
-# Measured: the first request of a run cost $0.32 (most input is read back from the
-# prompt cache at a twentieth of the price); allow twice that as the worst case.
-WORST_REQUEST_USD = 0.70
+# Measured on real runs: a full research request (~18 searches, ~740K cached input
+# tokens, ~13K output) costs about $0.90; most input is read back from the prompt
+# cache at a twentieth of the price. A second request only starts if one more of
+# these still fits under MAX_USD with the reserve.
+WORST_REQUEST_USD = 1.00
 RESERVE_USD = 0.30         # the wrap-up report and the extraction call (~$0.04-0.15)
 MAX_REQUESTS = 4
 WEB_SEARCH_USD = 0.01      # $10 per 1,000 searches
