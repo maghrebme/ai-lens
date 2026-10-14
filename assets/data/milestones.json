@@ -3357,6 +3357,17 @@
   "link": "https://www.anthropic.com/claude-haiku-5-5"
  },
  {
+  "date": "2026-10-07",
+  "category": "models",
+  "impact": 2,
+  "org": "Liquid AI",
+  "title_en": "Liquid AI releases open-weight d1 decision models",
+  "title_ar": "Liquid AI تطلق نماذج القرار d1 مفتوحة الأوزان",
+  "summary_en": "Liquid AI released d1-3B and the experimental d1-omni-600M, open-weight decision models that answer in a single pass. Liquid says d1-3B scores 48.57 on Decision Index v0.2.1, matching a model 12 times its size.",
+  "summary_ar": "أطلقت Liquid AI نموذجي d1-3B وd1-omni-600M التجريبي، وهما نموذجا قرار مفتوحا الأوزان يقدّمان الإجابة في تمريرة واحدة. وتقول الشركة إن d1-3B يحقق 48.57 على مؤشر Decision Index v0.2.1، مضاهيًا نموذجًا أكبر منه بـ12 مرة.",
+  "link": "https://www.liquid.ai/blog/d1-open"
+ },
+ {
   "date": "2026-10-08",
   "category": "products",
   "impact": 3,
