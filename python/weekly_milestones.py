@@ -140,9 +140,11 @@ SCHEMA = {
 # stops searching and writes the report from what it gathered.
 MAX_USD = float(os.environ.get("WEEKLY_MAX_USD", "2.0"))
 FETCH_TOKENS = 3000
-WORST_REQUEST_USD = 0.90   # ~10 iterations re-reading a context of up to ~35K tokens, plus output
-RESERVE_USD = 0.60         # the wrap-up report and the extraction call
-MAX_REQUESTS = 6
+# Measured: the first request of a run cost $0.32 (most input is read back from the
+# prompt cache at a twentieth of the price); allow twice that as the worst case.
+WORST_REQUEST_USD = 0.70
+RESERVE_USD = 0.30         # the wrap-up report and the extraction call (~$0.04-0.15)
+MAX_REQUESTS = 4
 WEB_SEARCH_USD = 0.01      # $10 per 1,000 searches
 # $ per million tokens: input, output, cache read, cache write (5-minute).
 PRICES = {
@@ -153,8 +155,8 @@ PRICES = {
 PRICE_UNKNOWN = (10.0, 50.0, 1.0, 12.5)  # a fallback model we don't list: assume the dearest tier
 
 TOOLS = [
-    {"type": "web_search_20260209", "name": "web_search", "max_uses": 8},
-    {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 10, "max_content_tokens": FETCH_TOKENS},
+    {"type": "web_search_20260209", "name": "web_search", "max_uses": 20},
+    {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 20, "max_content_tokens": FETCH_TOKENS},
 ]
 FALLBACK = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
 
@@ -215,10 +217,14 @@ def research(client: anthropic.Anthropic, budget: Budget, start: date, end: date
     """Agentic research with server-side web tools, within the budget; returns the report."""
     system = (RESEARCH_SYSTEM.replace("{start}", start.isoformat()).replace("{end}", end.isoformat())
               .replace("{existing}", existing))
-    task = {"role": "user", "content": f"Today is {end.isoformat()}. Research and verify this week's announcements, "
-                                       "then write the report. You have a limited number of searches and page "
-                                       "fetches: start with broad searches and release trackers, and fetch only "
-                                       "official pages of likely candidates."}
+    task = {"role": "user", "content": f"""Today is {end.isoformat()}. Research and verify this week's announcements, then write the report.
+
+Searches and page fetches are limited (about 20 of each), so plan them:
+1. Two or three searches on AI release trackers and weekly AI news round-ups for these dates.
+2. One search each for: AI funding rounds or acquisitions of $1 billion or more this week; AI laws, regulation or government AI programmes this week; major AI research breakthroughs this week.
+3. Searches for the biggest labs not yet covered by those results (OpenAI, Google, Anthropic, Meta, Microsoft, xAI, DeepSeek, Alibaba Qwen, Mistral), combining several labs in one query where you can.
+4. Fetch the official page only for candidates that look major, to confirm the date and figures. Do not fetch pages for items that are clearly minor or already in the existing data.
+Cover milestones and deals in every run."""}
     content: list = []
     finished = False
     for i in range(MAX_REQUESTS):
