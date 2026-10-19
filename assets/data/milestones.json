@@ -3399,5 +3399,27 @@
   "summary_en": "Argon reaches the Gemini API and Google AI Pro and Ultra subscribers. The Gemini app gains a tasks mode that keeps working while you're away, links to more than 40 apps such as Instacart, OpenTable and Shopify, and brings Antigravity's coding agent to the macOS app.",
   "summary_ar": "Argon يصل إلى واجهة Gemini البرمجية وإلى مشتركي Google AI Pro وUltra. ويضيف تطبيق Gemini وضع «المهام» الذي يواصل العمل في غيابك، وربطًا بأكثر من 40 تطبيقًا مثل Instacart وOpenTable وShopify، ووكيل البرمجة من Antigravity في تطبيق macOS.",
   "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"
+ },
+ {
+  "date": "2026-10-15",
+  "category": "models",
+  "impact": 3,
+  "org": "NVIDIA",
+  "title_en": "NVIDIA releases open Nemotron 3.5 Super VL model",
+  "title_ar": "NVIDIA تطلق نموذج Nemotron 3.5 Super VL المفتوح",
+  "summary_en": "NVIDIA released Nemotron 3.5 Super VL, an open 120B-parameter (12B active) model for business agents that handles text, images, documents and video. NVIDIA says it delivers up to 5x higher agent throughput on a single GPU than similar open models.",
+  "summary_ar": "أطلقت NVIDIA نموذج Nemotron 3.5 Super VL المفتوح بـ120 مليار معامل (12 ملياراً نشطة) لوكلاء الأعمال، ويفهم النصوص والصور والمستندات والفيديو. وتقول NVIDIA إنه يحقق إنتاجية أعلى حتى 5 مرات على وحدة GPU واحدة مقارنة بنماذج مماثلة.",
+  "link": "https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning/"
+ },
+ {
+  "date": "2026-10-16",
+  "category": "policy",
+  "impact": 4,
+  "org": "MOFCOM",
+  "title_en": "China proposes export controls on 23 AI technologies",
+  "title_ar": "الصين تقترح ضوابط تصدير على 23 تقنية للذكاء الاصطناعي",
+  "summary_en": "China's commerce and science ministries issued a draft export-control catalogue covering 40 technologies, 23 in AI including large models, agents and computing clusters. Exporters must register these technologies immediately; comments run to 15 November.",
+  "summary_ar": "أصدرت وزارتا التجارة والعلوم في الصين مسودة قائمة لضوابط التصدير تشمل 40 تقنية، منها 23 في الذكاء الاصطناعي كالنماذج الكبيرة والوكلاء ومجمعات الحوسبة. ويجب على المصدّرين تسجيلها فوراً، وتستمر التعليقات حتى 15 نوفمبر.",
+  "link": "https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_0a31a3c9ac404f7a9b0e917ce3412997.html"
  }
 ]
