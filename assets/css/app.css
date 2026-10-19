@@ -88,6 +88,8 @@ a { color: inherit; }
 .brand-name b { font-size: 1.45rem; }
 .brand-name small { font-size: .58rem; letter-spacing: .28em; color: var(--muted); font-weight: 600; }
 .tabs { display: inline-flex; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+/* Both labels ship in the HTML so the right one shows before any script runs. */
+html[lang='en'] .tabs [data-l='ar'], html:not([lang='en']) .tabs [data-l='en'] { display: none; }
 .tabs a { padding: 7px 18px; border-radius: 999px; text-decoration: none; font-size: .92rem; color: var(--muted); font-weight: 600; }
 .tabs a:hover { color: var(--text); }
 .tabs a[aria-current='page'] { background: var(--text); color: var(--bg); }
