@@ -298,8 +298,10 @@ def _duplicate(entry: dict, existing: list[dict]) -> str | None:
     for old in existing:
         if old.get("link") and _norm_link(old["link"]) == _norm_link(entry["link"]):
             return f"same link as \"{old['title_en']}\""
+        # Words from the organisation's name don't count ("Meta", "Muse Wonder" vs "Muse Spark Open").
+        org = _words(entry["org"]) | _words(old["org"])
         if abs((date.fromisoformat(old["date"]) - d).days) <= 14 \
-                and len(_words(old["title_en"]) & _words(entry["title_en"])) >= 2:
+                and len((_words(old["title_en"]) & _words(entry["title_en"])) - org) >= 2:
             return f"same story as \"{old['title_en']}\" ({old['date']})"
     return None
 
