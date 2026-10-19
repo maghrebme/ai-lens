@@ -1310,5 +1310,18 @@
   "summary_en": "Seed round led by DCVC, announced with the release of its Jev decision model.",
   "summary_ar": "جولة تأسيسية بقيادة DCVC، أُعلنت مع إطلاق نموذج القرار Jev.",
   "link": "https://en.wikipedia.org/wiki/Jev_(AI_model)"
+ },
+ {
+  "date": "2026-10-08",
+  "type": "strategic",
+  "org": "NVIDIA",
+  "region": "us",
+  "title_en": "NVIDIA commits $1 billion to US science",
+  "title_ar": "NVIDIA تتعهد بمليار دولار لدعم العلوم الأمريكية",
+  "summary_en": "NVIDIA says it has made commitments valued at $1 billion over five years for US universities, quantum-computing investments and cloud providers serving government needs, announced in Washington alongside the Genesis Mission science programme.",
+  "summary_ar": "تقول NVIDIA إنها قدّمت التزامات بقيمة مليار دولار على مدى خمس سنوات لصالح الجامعات الأمريكية واستثمارات الحوسبة الكمية ومزودي السحابة الذين يخدمون احتياجات الحكومة، وأُعلن ذلك في واشنطن ضمن برنامج Genesis Mission العلمي.",
+  "link": "https://nvidianews.nvidia.com/news/nvidia-commits-1-billion-to-advance-us-science-over-the-next-five-years",
+  "amount": 1000000000.0,
+  "currency": "USD"
  }
 ]
