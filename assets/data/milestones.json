@@ -3196,11 +3196,11 @@
   "category": "models",
   "impact": 3,
   "org": "DeepSeek",
-  "link": "https://en.wikipedia.org/wiki/List_of_large_language_models",
+  "link": "https://api-docs.deepseek.com/updates/",
   "title_en": "DeepSeek-V4.1-Flash",
   "title_ar": "DeepSeek-V4.1-Flash",
-  "summary_en": "DeepSeek releases DeepSeek-V4.1-Flash.",
-  "summary_ar": "DeepSeek تطلق DeepSeek-V4.1-Flash."
+  "summary_en": "The smallest model in DeepSeek's new architecture family, with native visual understanding, available through the API as deepseek-flash.",
+  "summary_ar": "أصغر نماذج عائلة DeepSeek المعمارية الجديدة، بفهم بصري أصلي، ومتاح عبر الواجهة البرمجية باسم deepseek-flash."
  },
  {
   "date": "2026-09-15",
@@ -3357,6 +3357,17 @@
   "link": "https://www.anthropic.com/claude-haiku-5-5"
  },
  {
+  "date": "2026-10-07",
+  "category": "products",
+  "impact": 3,
+  "org": "OpenAI",
+  "title_en": "ChatGPT gains Intelligent UI as GPT-6 reaches all users",
+  "title_ar": "ChatGPT يحصل على Intelligent UI مع وصول GPT-6 إلى جميع المستخدمين",
+  "summary_en": "OpenAI says GPT-6 is coming to everyone who uses ChatGPT, alongside Intelligent UI, which lets answers include interactive charts, maps, forms and small tools, and a feature that lets ChatGPT start answering before it finishes reasoning.",
+  "summary_ar": "تقول OpenAI إن GPT-6 أصبح متاحاً لجميع مستخدمي ChatGPT، إلى جانب ميزة Intelligent UI التي تتيح إجابات تتضمن رسوماً بيانية وخرائط ونماذج وأدوات صغيرة تفاعلية، وميزة تتيح لـ ChatGPT بدء الإجابة قبل إنهاء التفكير.",
+  "link": "https://openai.com/index/gpt-6-for-everyone/"
+ },
+ {
   "date": "2026-10-08",
   "category": "products",
   "impact": 3,
@@ -3366,6 +3377,17 @@
   "summary_en": "A “universal agent for work” for enterprises: from a single prompt it plans the task, uses tools and connects to business systems to return finished work.",
   "summary_ar": "«وكيل شامل للعمل» موجّه للمؤسسات: من طلب واحد يخطط للمهمة ويستخدم الأدوات ويتصل بأنظمة الأعمال ليعيد عملًا منجزًا.",
   "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-at-work/"
+ },
+ {
+  "date": "2026-10-08",
+  "category": "business",
+  "impact": 2,
+  "org": "Anthropic",
+  "title_en": "Anthropic launches the Anthropic Cyber Mission",
+  "title_ar": "Anthropic تطلق مبادرة Anthropic Cyber Mission",
+  "summary_en": "Anthropic says its Cyber Mission combines a Critical Infrastructure Defense Program, which brings Claude and on-site engineers to firms protecting power, water and transport systems, with free OSS Scanner security scans for open-source projects.",
+  "summary_ar": "تقول Anthropic إن مبادرتها Cyber Mission تجمع بين برنامج للدفاع عن البنية التحتية الحيوية يوفّر نماذج Claude ومهندسين ميدانيين للشركات التي تحمي أنظمة الطاقة والمياه والنقل، وأداة OSS Scanner لفحص أمني مجاني لمشاريع المصدر المفتوح.",
+  "link": "https://www.anthropic.com/news/anthropic-cyber-mission"
  },
  {
   "date": "2026-10-09",
@@ -3412,6 +3434,17 @@
   "link": "https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning/"
  },
  {
+  "date": "2026-10-15",
+  "category": "models",
+  "impact": 4,
+  "org": "Meta",
+  "title_en": "Meta releases Muse Spark Open, an open-weight model",
+  "title_ar": "ميتا تطلق Muse Spark Open، نموذجًا مفتوح الأوزان",
+  "summary_en": "An open-weight model with 816B parameters (42B active) and a 1M-token context, built for coding and agents, which Meta calls the most capable US open-weight model to date. Meta keeps its top Muse Wonder models closed.",
+  "summary_ar": "نموذج مفتوح الأوزان بـ816 مليار معامل (42 مليارًا نشطة) وسياق بمليون رمز، مصمم للبرمجة والوكلاء، تصفه ميتا بأنه أقوى نموذج أمريكي مفتوح الأوزان حتى الآن. وتُبقي ميتا نماذج Muse Wonder الأقوى مغلقة.",
+  "link": "https://research.meta.ai/blog/muse-spark-open"
+ },
+ {
   "date": "2026-10-16",
   "category": "policy",
   "impact": 4,
@@ -3421,5 +3454,27 @@
   "summary_en": "China's commerce and science ministries issued a draft export-control catalogue covering 40 technologies, 23 in AI including large models, agents and computing clusters. Exporters must register these technologies immediately; comments run to 15 November.",
   "summary_ar": "أصدرت وزارتا التجارة والعلوم في الصين مسودة قائمة لضوابط التصدير تشمل 40 تقنية، منها 23 في الذكاء الاصطناعي كالنماذج الكبيرة والوكلاء ومجمعات الحوسبة. ويجب على المصدّرين تسجيلها فوراً، وتستمر التعليقات حتى 15 نوفمبر.",
   "link": "https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_0a31a3c9ac404f7a9b0e917ce3412997.html"
+ },
+ {
+  "date": "2026-10-17",
+  "category": "models",
+  "impact": 3,
+  "org": "DeepSeek",
+  "title_en": "DeepSeek-V4.1-Flash-1017 update",
+  "title_ar": "تحديث DeepSeek-V4.1-Flash-1017",
+  "summary_en": "An upgrade of V4.1-Flash with open weights, at unchanged API prices: DeepSeek reports better benchmarks (Terminal-Bench 4.0 up from 31.2 to 42.3), faster tasks and shorter outputs.",
+  "summary_ar": "ترقية لـV4.1-Flash بأوزان مفتوحة وبأسعار الواجهة البرمجية نفسها: تقول DeepSeek إن نتائجه أفضل في المعايير (من 31.2 إلى 42.3 في Terminal-Bench 4.0)، مع مهام أسرع ومخرجات أقصر.",
+  "link": "https://api-docs.deepseek.com/updates/"
+ },
+ {
+  "date": "2026-10-19",
+  "category": "models",
+  "impact": 3,
+  "org": "Viggle AI",
+  "title_en": "Viggle AI's JST-2 world model builds 3D scenes in a second",
+  "title_ar": "نموذج JST-2 من Viggle AI يبني مشاهد ثلاثية الأبعاد في ثانية",
+  "summary_en": "A “physics-native” world foundation model that generates 3D scenes, rig-free animated characters and full-body motion in one shared 3D space. Viggle says a scene takes about one second and under $0.01; it is free to try in PINOC and on the API.",
+  "summary_ar": "نموذج أساسي للعالم «قائم على الفيزياء» يولّد مشاهد ثلاثية الأبعاد وشخصيات متحركة دون تجهيز هيكلي وحركة كاملة للجسم في فضاء ثلاثي الأبعاد واحد. وتقول Viggle إن المشهد يستغرق نحو ثانية بكلفة أقل من 0.01 دولار، ويمكن تجربته مجانًا في PINOC وعبر الواجهة البرمجية.",
+  "link": "https://viggle.ai/jst2"
  }
 ]
