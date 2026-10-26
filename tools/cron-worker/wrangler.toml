@@ -6,8 +6,8 @@ workers_dev = false
 preview_urls = false
 
 [triggers]
-# 00:00 and 12:00 UTC (GMT).
-crons = ["0 0,12 * * *"]
+# 00:00 and 12:00 UTC (GMT): news build. Mondays 04:00 UTC: weekly milestone check.
+crons = ["0 0,12 * * *", "0 4 * * 1"]
 
 [observability]
 enabled = true

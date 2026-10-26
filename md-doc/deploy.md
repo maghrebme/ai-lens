@@ -29,7 +29,7 @@ The site is then at `https://<your-user>.github.io/<repo>/` until a custom domai
 
 GitHub starts scheduled runs late on the free tier, often by several hours. The Worker in
 `tools/cron-worker/` uses Cloudflare Cron Triggers, which fire on time, to start the workflow at
-00:00 and 12:00 UTC. GitHub's own schedule stays as a backup.
+00:00 and 12:00 UTC, and the weekly milestone check on Mondays at 04:00 UTC. GitHub's own schedules stay as a backup (the weekly backup skips itself when the check already ran).
 
 1. On GitHub: **Settings → Developer settings → Personal access tokens → Fine-grained tokens →
    Generate new token**. Repository access: **Only select repositories** → this repository.

@@ -1,18 +1,22 @@
 // Ai-Lens — start the GitHub Pages build at exact times.
 //
 // GitHub's own schedule starts free-tier runs hours late. Cloudflare Cron
-// Triggers fire on time, so this Worker asks GitHub to run the workflow at
-// 00:00 and 12:00 UTC (see wrangler.toml). It has no public URL.
+// Triggers fire on time, so this Worker asks GitHub to run the workflows
+// (see wrangler.toml). It has no public URL.
+//   00:00 and 12:00 UTC  → pages.yml (news refresh and deploy)
+//   Mondays 04:00 UTC    → weekly-milestones.yml (weekly milestone check)
 //
 // Secret: GITHUB_TOKEN — a fine-grained token limited to this repository,
 // with "Actions: read and write" only. Set it with `wrangler secret put`.
 
 const REPO = 'maghrebme/ai-lens';
-const WORKFLOW = 'pages.yml';
+const WORKFLOWS = { '0 4 * * 1': 'weekly-milestones.yml' };
+const DEFAULT_WORKFLOW = 'pages.yml';
 
 export default {
   async scheduled(event, env, ctx) {
-    const res = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${WORKFLOW}/dispatches`, {
+    const workflow = WORKFLOWS[event.cron] || DEFAULT_WORKFLOW;
+    const res = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -25,7 +29,7 @@ export default {
     // 204 means GitHub accepted the run. Anything else shows up as a failed
     // invocation in the Worker's logs in the Cloudflare dashboard.
     if (res.status !== 204) {
-      throw new Error(`dispatch failed: ${res.status} ${(await res.text()).slice(0, 200)}`);
+      throw new Error(`dispatch of ${workflow} failed: ${res.status} ${(await res.text()).slice(0, 200)}`);
     }
   },
 };

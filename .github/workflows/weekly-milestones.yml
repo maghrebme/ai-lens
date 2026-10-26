@@ -7,11 +7,15 @@
 name: Weekly milestones
 
 on:
-  schedule:
-    - cron: "0 4 * * 1"   # Mondays 04:00 UTC; a late start doesn't matter for a weekly check
+  # Started on time by the Cloudflare Worker (tools/cron-worker) on Mondays at 04:00 UTC.
   workflow_dispatch:
+  # Backup in case the Worker is down or its token has expired. It skips itself
+  # when the check already ran in the last two days, so a week is never paid twice.
+  schedule:
+    - cron: "0 10 * * 1"
 
 permissions:
+  actions: read
   contents: write
   pull-requests: write
 
@@ -25,33 +29,47 @@ jobs:
     env:
       HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
+      - name: Skip the backup run when this week's check already ran
+        id: recent
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          since=$(date -u -d '2 days ago' +%FT%TZ)
+          recent=$(gh run list -R "$GITHUB_REPOSITORY" -w weekly-milestones.yml --status success \
+            --json createdAt -q "[.[] | select(.createdAt > \"$since\")] | length")
+          if [ "$recent" -gt 0 ]; then
+            echo "::notice::This week's check already ran; skipping the backup run."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Skip without an API key
-        if: env.HAS_ANTHROPIC_KEY != 'true'
+        if: env.HAS_ANTHROPIC_KEY != 'true' && steps.recent.outputs.skip != 'true'
         run: echo "::notice::Add an ANTHROPIC_API_KEY repository secret to enable the weekly check."
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        if: env.HAS_ANTHROPIC_KEY == 'true'
+        if: env.HAS_ANTHROPIC_KEY == 'true' && steps.recent.outputs.skip != 'true'
         with:
           persist-credentials: false
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        if: env.HAS_ANTHROPIC_KEY == 'true'
+        if: env.HAS_ANTHROPIC_KEY == 'true' && steps.recent.outputs.skip != 'true'
         with:
           python-version: "3.12"
 
       - name: Install the Anthropic SDK
-        if: env.HAS_ANTHROPIC_KEY == 'true'
+        if: env.HAS_ANTHROPIC_KEY == 'true' && steps.recent.outputs.skip != 'true'
         run: pip install -r python/requirements.txt
 
       - name: Find and verify announcements
-        if: env.HAS_ANTHROPIC_KEY == 'true'
+        if: env.HAS_ANTHROPIC_KEY == 'true' && steps.recent.outputs.skip != 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PR_BODY: ${{ runner.temp }}/pr-body.md
         run: python python/weekly_milestones.py
 
       - name: Open a pull request
-        if: env.HAS_ANTHROPIC_KEY == 'true'
+        if: env.HAS_ANTHROPIC_KEY == 'true' && steps.recent.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           PR_BODY: ${{ runner.temp }}/pr-body.md
