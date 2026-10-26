@@ -3476,5 +3476,16 @@
   "summary_en": "A “physics-native” world foundation model that generates 3D scenes, rig-free animated characters and full-body motion in one shared 3D space. Viggle says a scene takes about one second and under $0.01; it is free to try in PINOC and on the API.",
   "summary_ar": "نموذج أساسي للعالم «قائم على الفيزياء» يولّد مشاهد ثلاثية الأبعاد وشخصيات متحركة دون تجهيز هيكلي وحركة كاملة للجسم في فضاء ثلاثي الأبعاد واحد. وتقول Viggle إن المشهد يستغرق نحو ثانية بكلفة أقل من 0.01 دولار، ويمكن تجربته مجانًا في PINOC وعبر الواجهة البرمجية.",
   "link": "https://viggle.ai/jst2"
+ },
+ {
+  "date": "2026-10-21",
+  "category": "products",
+  "impact": 3,
+  "org": "Anthropic",
+  "title_en": "Anthropic previews Claude Duet proactive agent app",
+  "title_ar": "Anthropic تطرح معاينة تطبيق Claude Duet للوكيل الاستباقي",
+  "summary_en": "Anthropic says Claude Duet is a new app, built around Claude Opus 5.5, where Claude acts as a proactive agent that flags what needs attention and does tasks. The research preview opens by waitlist on iOS, Android and claude.ai, starting with US Pro and Max subscribers.",
+  "summary_ar": "تقول Anthropic إن Claude Duet تطبيق جديد مبني على Claude Opus 5.5، يعمل فيه Claude وكيلاً استباقياً ينبّه إلى ما يستحق الاهتمام وينجز المهام. وتُتاح المعاينة البحثية عبر قائمة انتظار على iOS وAndroid وclaude.ai، بدءاً بمشتركي Pro وMax في الولايات المتحدة.",
+  "link": "https://claude.com/resources/articles/claude-duet"
  }
 ]
