@@ -3478,6 +3478,18 @@
   "link": "https://viggle.ai/jst2"
  },
  {
+  "date": "2026-10-19",
+  "category": "models",
+  "impact": 3,
+  "org": "Black Forest Labs",
+  "title_en": "FLUX 3 Max, fast video with native audio",
+  "title_ar": "FLUX 3 Max، فيديو سريع بصوت أصلي",
+  "summary_en": "fal and Black Forest Labs release FLUX 3 Max, a video model post-trained on FLUX 3. fal says it makes a 10-second clip in about 12 seconds, 22× faster than Seedance 2.5, and ties for first in image-to-video on Artificial Analysis's preliminary arena.",
+  "summary_ar": "fal وBlack Forest Labs تطلقان FLUX 3 Max، نموذج فيديو مدرَّب لاحقًا على FLUX 3. وتقول fal إنه ينتج مقطعًا من 10 ثوانٍ في نحو 12 ثانية، أسرع بـ22 مرة من Seedance 2.5، ويتقاسم المركز الأول في تحويل الصور إلى فيديو على ساحة Artificial Analysis الأولية.",
+  "link": "https://fal.ai/flux-3-max",
+  "precision": "month"
+ },
+ {
   "date": "2026-10-21",
   "category": "products",
   "impact": 3,
@@ -3487,5 +3499,49 @@
   "summary_en": "Anthropic says Claude Duet is a new app, built around Claude Opus 5.5, where Claude acts as a proactive agent that flags what needs attention and does tasks. The research preview opens by waitlist on iOS, Android and claude.ai, starting with US Pro and Max subscribers.",
   "summary_ar": "تقول Anthropic إن Claude Duet تطبيق جديد مبني على Claude Opus 5.5، يعمل فيه Claude وكيلاً استباقياً ينبّه إلى ما يستحق الاهتمام وينجز المهام. وتُتاح المعاينة البحثية عبر قائمة انتظار على iOS وAndroid وclaude.ai، بدءاً بمشتركي Pro وMax في الولايات المتحدة.",
   "link": "https://claude.com/resources/articles/claude-duet"
+ },
+ {
+  "date": "2026-10-23",
+  "category": "models",
+  "impact": 4,
+  "org": "Moonshot AI",
+  "title_en": "Kimi K3.1 Pro, a 3T-class open-weight model",
+  "title_ar": "Kimi K3.1 Pro، نموذج مفتوح الأوزان من فئة 3 تريليونات معامل",
+  "summary_en": "Moonshot's first K3.1 model, which it calls its most capable 3T-class open-weight model, with a 1M-token context, plus a 2-3× faster Highspeed version. It launches on Kimi and the Kimi API, with weights to follow.",
+  "summary_ar": "أول نموذج من سلسلة K3.1 من Moonshot، تصفه بأنه أقوى نماذجها مفتوحة الأوزان من فئة 3 تريليونات معامل، بسياق مليون رمز، ومعه نسخة Highspeed أسرع بمرتين إلى ثلاث. يُطلق على Kimi وواجهتها البرمجية، على أن تُنشر الأوزان لاحقًا.",
+  "link": "https://forum.moonshot.ai/t/kimi-k3-1-pro-has-launched-start-exploring-now/629"
+ },
+ {
+  "date": "2026-10-23",
+  "category": "models",
+  "impact": 2,
+  "org": "NVIDIA",
+  "title_en": "Nemotron 3.5 Bolt E4B, a 4GB model for local agents",
+  "title_ar": "Nemotron 3.5 Bolt E4B، نموذج بحجم 4 غيغابايت للوكلاء المحليين",
+  "summary_en": "An open small model built on Gemma 4 E4B for voice assistants, game characters and robots on RTX, Jetson and DGX Spark. NVIDIA reports about 40% higher quality than its previous small model and up to 80% fewer output tokens than peers.",
+  "summary_ar": "نموذج صغير مفتوح مبني على Gemma 4 E4B للمساعدات الصوتية وشخصيات الألعاب والروبوتات على RTX وJetson وDGX Spark. وتقول NVIDIA إن جودته أعلى بنحو 40% من نموذجها الصغير السابق، وإنه ينتج حتى 80% رموزًا أقل من نظرائه.",
+  "link": "https://research.nvidia.com/labs/nemotron/Nemotron-3.5-Bolt-E4B-4GB/"
+ },
+ {
+  "date": "2026-10-23",
+  "category": "research",
+  "impact": 3,
+  "org": "Block",
+  "title_en": "Block's Dessa learns to talk from speech alone",
+  "title_ar": "Dessa من Block يتعلم الكلام من الصوت وحده",
+  "summary_en": "A full-duplex speech-to-speech model trained from scratch only on human conversation, with no text or pretrained models, on a single NVIDIA GB200 NVL72. It runs on a MacBook Pro; a research preview opens first to AI-safety researchers.",
+  "summary_ar": "نموذج كلام إلى كلام ثنائي الاتجاه دُرّب من الصفر على المحادثات البشرية وحدها، دون نصوص أو نماذج مسبقة، على وحدة NVIDIA GB200 NVL72 واحدة. يعمل على MacBook Pro، وتُتاح نسخته البحثية أولًا لباحثي سلامة الذكاء الاصطناعي.",
+  "link": "https://block.xyz/dessa"
+ },
+ {
+  "date": "2026-10-26",
+  "category": "models",
+  "impact": 3,
+  "org": "OpenAI",
+  "title_en": "GPT-6.1 Terra, faster computer use at half the price",
+  "title_ar": "GPT-6.1 Terra، استخدام أسرع للحاسوب بنصف السعر",
+  "summary_en": "OpenAI's mid-tier model for computer use across apps, at $1/$5 per million tokens, about half the price of GPT-5.6 Terra. It comes to paid ChatGPT Work and Codex users and the API.",
+  "summary_ar": "نموذج OpenAI متوسط الفئة لاستخدام الحاسوب عبر التطبيقات، بسعر 1 و5 دولارات لكل مليون رمز، أي نحو نصف سعر GPT-5.6 Terra. يُتاح لمستخدمي ChatGPT Work وCodex المدفوعين وعبر الواجهة البرمجية.",
+  "link": "https://openai.com/index/introducing-gpt-6-1-terra/"
  }
 ]
