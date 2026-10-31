@@ -3341,8 +3341,8 @@
   "org": "Mistral AI",
   "title_en": "Mistral Large 4, a trillion-parameter open-weight model",
   "title_ar": "Mistral Large 4، نموذج مفتوح الأوزان بتريليون معامل",
-  "summary_en": "A natively multimodal model with 1 trillion parameters (52B active), trained from scratch in Mistral's European data centres. It opens as a preview API, with the weights due by the end of October.",
-  "summary_ar": "نموذج متعدد الوسائط أصلًا بتريليون معامل (52 مليارًا نشطة)، دُرّب من الصفر في مراكز بيانات Mistral الأوروبية. يُتاح أولًا كواجهة برمجية تجريبية، على أن تُنشر الأوزان قبل نهاية أكتوبر.",
+  "summary_en": "A natively multimodal model with 1 trillion parameters (52B active), trained from scratch in Mistral's European data centres. It opened as a preview API, and the weights followed on Hugging Face on 29 October.",
+  "summary_ar": "نموذج متعدد الوسائط أصلًا بتريليون معامل (52 مليارًا نشطة)، دُرّب من الصفر في مراكز بيانات Mistral الأوروبية. أُتيح أولًا كواجهة برمجية تجريبية، ثم نُشرت أوزانه على Hugging Face في 29 أكتوبر.",
   "link": "https://mistral.ai/news/mistral-large-4/"
  },
  {
@@ -3476,5 +3476,94 @@
   "summary_en": "A “physics-native” world foundation model that generates 3D scenes, rig-free animated characters and full-body motion in one shared 3D space. Viggle says a scene takes about one second and under $0.01; it is free to try in PINOC and on the API.",
   "summary_ar": "نموذج أساسي للعالم «قائم على الفيزياء» يولّد مشاهد ثلاثية الأبعاد وشخصيات متحركة دون تجهيز هيكلي وحركة كاملة للجسم في فضاء ثلاثي الأبعاد واحد. وتقول Viggle إن المشهد يستغرق نحو ثانية بكلفة أقل من 0.01 دولار، ويمكن تجربته مجانًا في PINOC وعبر الواجهة البرمجية.",
   "link": "https://viggle.ai/jst2"
+ },
+ {
+  "date": "2026-10-19",
+  "category": "models",
+  "impact": 3,
+  "org": "Black Forest Labs",
+  "title_en": "FLUX 3 Max, fast video with native audio",
+  "title_ar": "FLUX 3 Max، فيديو سريع بصوت أصلي",
+  "summary_en": "fal and Black Forest Labs release FLUX 3 Max, a video model post-trained on FLUX 3. fal says it makes a 10-second clip in about 12 seconds, 22× faster than Seedance 2.5, and ties for first in image-to-video on Artificial Analysis's preliminary arena.",
+  "summary_ar": "fal وBlack Forest Labs تطلقان FLUX 3 Max، نموذج فيديو مدرَّب لاحقًا على FLUX 3. وتقول fal إنه ينتج مقطعًا من 10 ثوانٍ في نحو 12 ثانية، أسرع بـ22 مرة من Seedance 2.5، ويتقاسم المركز الأول في تحويل الصور إلى فيديو على ساحة Artificial Analysis الأولية.",
+  "link": "https://fal.ai/flux-3-max",
+  "precision": "month"
+ },
+ {
+  "date": "2026-10-21",
+  "category": "products",
+  "impact": 3,
+  "org": "Anthropic",
+  "title_en": "Anthropic previews Claude Duet proactive agent app",
+  "title_ar": "Anthropic تطرح معاينة تطبيق Claude Duet للوكيل الاستباقي",
+  "summary_en": "Anthropic says Claude Duet is a new app, built around Claude Opus 5.5, where Claude acts as a proactive agent that flags what needs attention and does tasks. The research preview opens by waitlist on iOS, Android and claude.ai, starting with US Pro and Max subscribers.",
+  "summary_ar": "تقول Anthropic إن Claude Duet تطبيق جديد مبني على Claude Opus 5.5، يعمل فيه Claude وكيلاً استباقياً ينبّه إلى ما يستحق الاهتمام وينجز المهام. وتُتاح المعاينة البحثية عبر قائمة انتظار على iOS وAndroid وclaude.ai، بدءاً بمشتركي Pro وMax في الولايات المتحدة.",
+  "link": "https://claude.com/resources/articles/claude-duet"
+ },
+ {
+  "date": "2026-10-23",
+  "category": "models",
+  "impact": 4,
+  "org": "Moonshot AI",
+  "title_en": "Kimi K3.1 Pro, a 3T-class open-weight model",
+  "title_ar": "Kimi K3.1 Pro، نموذج مفتوح الأوزان من فئة 3 تريليونات معامل",
+  "summary_en": "Moonshot's first K3.1 model, which it calls its most capable 3T-class open-weight model, with a 1M-token context, plus a 2-3× faster Highspeed version. It launches on Kimi and the Kimi API, with weights to follow.",
+  "summary_ar": "أول نموذج من سلسلة K3.1 من Moonshot، تصفه بأنه أقوى نماذجها مفتوحة الأوزان من فئة 3 تريليونات معامل، بسياق مليون رمز، ومعه نسخة Highspeed أسرع بمرتين إلى ثلاث. يُطلق على Kimi وواجهتها البرمجية، على أن تُنشر الأوزان لاحقًا.",
+  "link": "https://forum.moonshot.ai/t/kimi-k3-1-pro-has-launched-start-exploring-now/629"
+ },
+ {
+  "date": "2026-10-23",
+  "category": "models",
+  "impact": 2,
+  "org": "NVIDIA",
+  "title_en": "Nemotron 3.5 Bolt E4B, a 4GB model for local agents",
+  "title_ar": "Nemotron 3.5 Bolt E4B، نموذج بحجم 4 غيغابايت للوكلاء المحليين",
+  "summary_en": "An open small model built on Gemma 4 E4B for voice assistants, game characters and robots on RTX, Jetson and DGX Spark. NVIDIA reports about 40% higher quality than its previous small model and up to 80% fewer output tokens than peers.",
+  "summary_ar": "نموذج صغير مفتوح مبني على Gemma 4 E4B للمساعدات الصوتية وشخصيات الألعاب والروبوتات على RTX وJetson وDGX Spark. وتقول NVIDIA إن جودته أعلى بنحو 40% من نموذجها الصغير السابق، وإنه ينتج حتى 80% رموزًا أقل من نظرائه.",
+  "link": "https://research.nvidia.com/labs/nemotron/Nemotron-3.5-Bolt-E4B-4GB/"
+ },
+ {
+  "date": "2026-10-23",
+  "category": "research",
+  "impact": 3,
+  "org": "Block",
+  "title_en": "Block's Dessa learns to talk from speech alone",
+  "title_ar": "Dessa من Block يتعلم الكلام من الصوت وحده",
+  "summary_en": "A full-duplex speech-to-speech model trained from scratch only on human conversation, with no text or pretrained models, on a single NVIDIA GB200 NVL72. It runs on a MacBook Pro; a research preview opens first to AI-safety researchers.",
+  "summary_ar": "نموذج كلام إلى كلام ثنائي الاتجاه دُرّب من الصفر على المحادثات البشرية وحدها، دون نصوص أو نماذج مسبقة، على وحدة NVIDIA GB200 NVL72 واحدة. يعمل على MacBook Pro، وتُتاح نسخته البحثية أولًا لباحثي سلامة الذكاء الاصطناعي.",
+  "link": "https://block.xyz/dessa"
+ },
+ {
+  "date": "2026-10-26",
+  "category": "models",
+  "impact": 3,
+  "org": "OpenAI",
+  "title_en": "GPT-6.1 Terra, faster computer use at half the price",
+  "title_ar": "GPT-6.1 Terra، استخدام أسرع للحاسوب بنصف السعر",
+  "summary_en": "OpenAI's mid-tier model for computer use across apps, at $1/$5 per million tokens, about half the price of GPT-5.6 Terra. It comes to paid ChatGPT Work and Codex users and the API.",
+  "summary_ar": "نموذج OpenAI متوسط الفئة لاستخدام الحاسوب عبر التطبيقات، بسعر 1 و5 دولارات لكل مليون رمز، أي نحو نصف سعر GPT-5.6 Terra. يُتاح لمستخدمي ChatGPT Work وCodex المدفوعين وعبر الواجهة البرمجية.",
+  "link": "https://openai.com/index/introducing-gpt-6-1-terra/"
+ },
+ {
+  "date": "2026-10-27",
+  "category": "research",
+  "impact": 4,
+  "org": "Google DeepMind",
+  "title_en": "Genie 4 adds sound and live steering to world simulation",
+  "title_ar": "Genie 4 يضيف الصوت والتوجيه الحي إلى محاكاة العوالم",
+  "summary_en": "DeepMind's new world model generates interactive worlds in real time with native audio, including ambient sound, music and dialogue, better physics and human motion, and lets users steer scenes mid-simulation. It opens as a research preview for trusted testers.",
+  "summary_ar": "نموذج العوالم الجديد من DeepMind يولّد عوالم تفاعلية لحظيًا بصوت أصلي، يشمل الأصوات المحيطة والموسيقى والحوار، مع فيزياء وحركة بشرية أفضل، ويتيح توجيه المشاهد أثناء المحاكاة. يُتاح أولًا كنسخة بحثية لمختبرين موثوقين.",
+  "link": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+ },
+ {
+  "date": "2026-10-28",
+  "category": "models",
+  "impact": 4,
+  "org": "Google",
+  "title_en": "Gemini 4 Carbon, Google's new frontier model",
+  "title_ar": "Gemini 4 Carbon، نموذج Google المتقدم الجديد",
+  "summary_en": "Two weeks after Argon, Google's strongest model, built for coding, cyber defence and long agentic work. Google says it tops the Artificial Analysis Intelligence Index v5.0 at 59. It goes first to cyber defenders, with wider access later.",
+  "summary_ar": "بعد أسبوعين من Argon، أقوى نماذج Google، مصمم للبرمجة والدفاع السيبراني والعمل الوكيلي الطويل. وتقول Google إنه يتصدر مؤشر Artificial Analysis للذكاء (الإصدار 5.0) بـ59 نقطة. يُتاح أولًا لخبراء الدفاع السيبراني، ثم على نطاق أوسع لاحقًا.",
+  "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
  }
 ]

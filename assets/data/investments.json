@@ -1323,5 +1323,20 @@
   "link": "https://nvidianews.nvidia.com/news/nvidia-commits-1-billion-to-advance-us-science-over-the-next-five-years",
   "amount": 1000000000.0,
   "currency": "USD"
+ },
+ {
+  "date": "2026-10-19",
+  "type": "funding",
+  "org": "Tenstorrent",
+  "region": "us",
+  "title_en": "Tenstorrent raises $1.5B Series E",
+  "title_ar": "Tenstorrent تجمع 1.5 مليار دولار في جولة تمويل من الفئة E",
+  "summary_en": "Tenstorrent says it raised a $1.5B Series E at a $6.2B post-money valuation, led by Trace Capital and Innovation X. The company says the funds will go to deploying Galaxy servers at scale, serving open-weight models and developing its licensed AI and CPU designs.",
+  "summary_ar": "تقول Tenstorrent إنها جمعت 1.5 مليار دولار في جولة من الفئة E بتقييم 6.2 مليار دولار بعد التمويل، بقيادة Trace Capital وInnovation X. وتقول الشركة إن الأموال ستُوجَّه إلى نشر خوادم Galaxy على نطاق واسع وتشغيل النماذج مفتوحة الأوزان وتطوير تصاميم الذكاء الاصطناعي والمعالجات التي ترخّصها.",
+  "link": "https://tenstorrent.com/en/newsroom/tenstorrent-announces-series-e",
+  "amount": 1500000000.0,
+  "currency": "USD",
+  "valuation": 6200000000.0,
+  "valuation_currency": "USD"
  }
 ]

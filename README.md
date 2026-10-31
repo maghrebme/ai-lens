@@ -32,9 +32,9 @@
 
 | الصفحة | المحتوى |
 |---|---|
-| **الخط الزمني** | 310 محطة من عام 1843 حتى اليوم على خط متعرّج يبدأ من المستقبل في الأعلى وينتهي بالبدايات في الأسفل. بطاقات كاملة، وخط يمتلئ مع التمرير، وانتقال سريع بين العقود. تُضاف إطلاقات النماذج الكبرى تلقائيًا، من منشورات المختبرات نفسها (OpenAI وGoogle وAnthropic وMeta وMicrosoft وxAI وMistral وغيرها) أو حين تغطي أربعة منافذ على الأقل إطلاقًا من مختبر كبير. |
+| **الخط الزمني** | 318 محطة من عام 1843 حتى اليوم على خط متعرّج يبدأ من المستقبل في الأعلى وينتهي بالبدايات في الأسفل. بطاقات كاملة، وخط يمتلئ مع التمرير، وانتقال سريع بين العقود. تُضاف إطلاقات النماذج الكبرى تلقائيًا، من منشورات المختبرات نفسها (OpenAI وGoogle وAnthropic وMeta وMicrosoft وxAI وMistral وغيرها) أو حين تغطي أربعة منافذ على الأقل إطلاقًا من مختبر كبير. |
 | **آخر الأخبار** | تغطية حيّة من 25 مصدرًا (مختبرات الذكاء الاصطناعي والصحافة التقنية العربية والعالمية) تُحدَّث تلقائيًا كل 12 ساعة، مجمّعة حسب اليوم على خط زمني عمودي. |
-| **الاستثمارات** | 94 صفقة من جولات التمويل والاستحواذات وصفقات البنية التحتية والبرامج الحكومية والطروحات العامة (2010 ← 2026) على مسار عمودي يبرز قيمة كل صفقة. |
+| **الاستثمارات** | 95 صفقة من جولات التمويل والاستحواذات وصفقات البنية التحتية والبرامج الحكومية والطروحات العامة (2010 ← 2026) على مسار عمودي يبرز قيمة كل صفقة. |
 | **خواطر** | مقالة بأسلوب المجلات حول أثر تسارع الذكاء الاصطناعي على قيمة المهارات البشرية، مع نقاش صوتي بالعربية والإنجليزية والفرنسية أُنتج باستخدام NotebookLM. |
 
 ميزات مشتركة: تصفية حسب التصنيف والنوع والمنطقة، وبحث، ونافذة «المصادر والمراجع» في التذييل لإخفاء أي مصدر، والتاريخ الهجري والميلادي.
@@ -113,9 +113,9 @@ The interface is **Arabic by default** with full English support, dark and light
 
 | Page | What it shows |
 |---|---|
-| **Timeline** (`index.html`) | 310 milestones from 1843 to today on a "snake" progress line, future at the top and origins at the bottom. Full cards, a line that fills as you scroll, and decade shortcuts. Major model launches join it automatically, from the labs' own posts (OpenAI, Google, Anthropic, Meta, Microsoft, xAI, Mistral and more) or when at least four outlets cover a big lab's launch. |
+| **Timeline** (`index.html`) | 318 milestones from 1843 to today on a "snake" progress line, future at the top and origins at the bottom. Full cards, a line that fills as you scroll, and decade shortcuts. Major model launches join it automatically, from the labs' own posts (OpenAI, Google, Anthropic, Meta, Microsoft, xAI, Mistral and more) or when at least four outlets cover a big lab's launch. |
 | **Latest news** (`news.html`) | A live feed from 25 sources (AI labs, international and Arabic tech press), refreshed every 12 hours and grouped by day on a vertical timeline. |
-| **Investments** (`invest.html`) | 94 funding rounds, acquisitions, infrastructure deals, government programmes and IPOs (2010 → 2026) on a vertical track that puts each amount first. |
+| **Investments** (`invest.html`) | 95 funding rounds, acquisitions, infrastructure deals, government programmes and IPOs (2010 → 2026) on a vertical track that puts each amount first. |
 | **Reflections** (`reflections.html`) | A magazine-style essay on what accelerating AI means for the value of human skills, with an audio debate in Arabic, English and French produced with Google NotebookLM. |
 
 Shared features:
