@@ -1338,5 +1338,18 @@
   "currency": "USD",
   "valuation": 6200000000.0,
   "valuation_currency": "USD"
+ },
+ {
+  "date": "2026-10-26",
+  "type": "infrastructure",
+  "org": "SpaceX",
+  "region": "us",
+  "title_en": "SpaceX secures $40B GPU financing from Apollo",
+  "title_ar": "SpaceX تحصل على تمويل بقيمة 40 مليار دولار لوحدات GPU من Apollo",
+  "summary_en": "SpaceX, parent of xAI, disclosed a binding commitment of about $40 billion with Apollo for a master finance lease of GPUs and related equipment. Apollo calls it the largest GPU financing ever.",
+  "summary_ar": "كشفت SpaceX، الشركة الأم لـxAI، عن التزام ملزم بنحو 40 مليار دولار مع Apollo لعقد تأجير تمويلي رئيسي لوحدات GPU والمعدات المرتبطة بها. وتقول Apollo إنه أكبر تمويل لوحدات GPU على الإطلاق.",
+  "link": "https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever",
+  "amount": 40000000000.0,
+  "currency": "USD"
  }
 ]
