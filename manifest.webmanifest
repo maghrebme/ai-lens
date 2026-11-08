@@ -19,7 +19,7 @@
     {"src": "favicon.svg", "sizes": "any", "type": "image/svg+xml"}
   ],
   "shortcuts": [
-    {"name": "آخر الأخبار · Latest news", "short_name": "News", "url": "news.html"},
+    {"name": "الخط الزمني · Timeline", "short_name": "Timeline", "url": "timeline.html"},
     {"name": "الاستثمارات · Investments", "short_name": "Investments", "url": "invest.html"}
   ]
 }

@@ -5,7 +5,7 @@
 // stamps a new VERSION (python/build_static.py), which clears the old cache.
 const VERSION = 'dev';
 const CACHE = `ai-lens-${VERSION}`;
-const SHELL = ['./', 'index.html', 'news.html', 'invest.html', 'reflections.html', 'favicon.svg'];
+const SHELL = ['./', 'index.html', 'timeline.html', 'invest.html', 'reflections.html', 'favicon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -30,6 +30,6 @@ self.addEventListener('fetch', (event) => {
     }
     return res;
   }).catch(() => caches.match(req, { ignoreSearch: req.mode === 'navigate' })
-    // Offline and never visited: open the cached timeline instead of an error page.
+    // Offline and never visited: open the cached home page (latest news) instead of an error page.
     .then((hit) => hit || (req.mode === 'navigate' ? caches.match('index.html') : Response.error()))));
 });
