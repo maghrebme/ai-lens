@@ -3507,8 +3507,8 @@
   "org": "Moonshot AI",
   "title_en": "Kimi K3.1 Pro, a 3T-class open-weight model",
   "title_ar": "Kimi K3.1 Pro، نموذج مفتوح الأوزان من فئة 3 تريليونات معامل",
-  "summary_en": "Moonshot's first K3.1 model, which it calls its most capable 3T-class open-weight model, with a 1M-token context, plus a 2-3× faster Highspeed version. It launches on Kimi and the Kimi API, with weights to follow.",
-  "summary_ar": "أول نموذج من سلسلة K3.1 من Moonshot، تصفه بأنه أقوى نماذجها مفتوحة الأوزان من فئة 3 تريليونات معامل، بسياق مليون رمز، ومعه نسخة Highspeed أسرع بمرتين إلى ثلاث. يُطلق على Kimi وواجهتها البرمجية، على أن تُنشر الأوزان لاحقًا.",
+  "summary_en": "Moonshot's first K3.1 model, which it calls its most capable 3T-class open-weight model (2.8T parameters, 104B active), with a 1M-token context and a 2-3× faster Highspeed version. The weights followed on Hugging Face in early November.",
+  "summary_ar": "أول نموذج من سلسلة K3.1 من Moonshot، تصفه بأنه أقوى نماذجها مفتوحة الأوزان من فئة 3 تريليونات معامل (2.8 تريليون معامل، منها 104 مليارات نشطة)، بسياق مليون رمز ونسخة Highspeed أسرع بمرتين إلى ثلاث. ونُشرت الأوزان على Hugging Face في مطلع نوفمبر.",
   "link": "https://forum.moonshot.ai/t/kimi-k3-1-pro-has-launched-start-exploring-now/629"
  },
  {
@@ -3545,6 +3545,17 @@
   "link": "https://openai.com/index/introducing-gpt-6-1-terra/"
  },
  {
+  "date": "2026-10-26",
+  "category": "business",
+  "impact": 4,
+  "org": "Anthropic",
+  "title_en": "Anthropic files to go public on Nasdaq",
+  "title_ar": "Anthropic تتقدم بطلب الإدراج في بورصة ناسداك",
+  "summary_en": "Anthropic files its S-1 with the SEC to list on the Nasdaq Global Select Market as ANT, reporting $16.3B in first-half 2026 revenue. The price range, share count and size of the offering are not yet set.",
+  "summary_ar": "Anthropic تقدّم نموذج S-1 إلى هيئة الأوراق المالية الأمريكية للإدراج في سوق ناسداك العالمي المختار تحت الرمز ANT، وتُفصح عن إيرادات بـ16.3 مليار دولار في النصف الأول من 2026. ولم يُحدَّد بعد نطاق السعر ولا عدد الأسهم ولا حجم الطرح.",
+  "link": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm"
+ },
+ {
   "date": "2026-10-27",
   "category": "research",
   "impact": 4,
@@ -3565,5 +3576,28 @@
   "summary_en": "Two weeks after Argon, Google's strongest model, built for coding, cyber defence and long agentic work. Google says it tops the Artificial Analysis Intelligence Index v5.0 at 59. It goes first to cyber defenders, with wider access later.",
   "summary_ar": "بعد أسبوعين من Argon، أقوى نماذج Google، مصمم للبرمجة والدفاع السيبراني والعمل الوكيلي الطويل. وتقول Google إنه يتصدر مؤشر Artificial Analysis للذكاء (الإصدار 5.0) بـ59 نقطة. يُتاح أولًا لخبراء الدفاع السيبراني، ثم على نطاق أوسع لاحقًا.",
   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+ },
+ {
+  "date": "2026-11-05",
+  "category": "models",
+  "impact": 3,
+  "org": "Baidu",
+  "title_en": "Baidu releases open-weight ERNIE 5.5 Flash Base",
+  "title_ar": "Baidu تطلق نموذج ERNIE 5.5 Flash Base مفتوح الأوزان",
+  "summary_en": "Baidu released ERNIE 5.5 Flash Base, a sparse mixture-of-experts base model with 280B total and 14B active parameters, pre-trained from scratch on 33.5T tokens and supporting a 1M-token context for fine-tuning and inference.",
+  "summary_ar": "أطلقت Baidu نموذج ERNIE 5.5 Flash Base، وهو نموذج أساسي من نوع مزيج الخبراء المتناثر يضم 280 مليار معامل إجمالاً و14 مليار معامل نشط، دُرّب مسبقاً من الصفر على 33.5 تريليون رمز، ويدعم سياقاً بطول مليون رمز للضبط الدقيق والاستدلال.",
+  "link": "https://ernie.baidu.com/release/ernie-5-5-flash-base/",
+  "precision": "month"
+ },
+ {
+  "date": "2026-11-05",
+  "category": "models",
+  "impact": 3,
+  "org": "Thinking Machines Lab",
+  "title_en": "Thinking Machines releases Inkling 2 Small",
+  "title_ar": "Thinking Machines تطلق Inkling 2 Small",
+  "summary_en": "The second generation of Inkling: a 594B-parameter mixture of experts (17B active) with image input and adjustable effort, available first on the company's Tinker platform. It plans to release the weights under Apache 2.0.",
+  "summary_ar": "الجيل الثاني من Inkling: نموذج بمعمارية خليط الخبراء بـ594 مليار معامل (17 مليارًا نشطة) يقبل الصور ويتيح ضبط مستوى الجهد، متاح أولًا على منصة Tinker التابعة للشركة. وتعتزم الشركة نشر الأوزان برخصة Apache 2.0.",
+  "link": "https://thinkingmachines.ai/news/inkling-2-small/"
  }
 ]
