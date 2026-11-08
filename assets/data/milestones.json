@@ -3565,5 +3565,17 @@
   "summary_en": "Two weeks after Argon, Google's strongest model, built for coding, cyber defence and long agentic work. Google says it tops the Artificial Analysis Intelligence Index v5.0 at 59. It goes first to cyber defenders, with wider access later.",
   "summary_ar": "بعد أسبوعين من Argon، أقوى نماذج Google، مصمم للبرمجة والدفاع السيبراني والعمل الوكيلي الطويل. وتقول Google إنه يتصدر مؤشر Artificial Analysis للذكاء (الإصدار 5.0) بـ59 نقطة. يُتاح أولًا لخبراء الدفاع السيبراني، ثم على نطاق أوسع لاحقًا.",
   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+ },
+ {
+  "date": "2026-11-05",
+  "category": "models",
+  "impact": 3,
+  "org": "Baidu",
+  "title_en": "Baidu releases open-weight ERNIE 5.5 Flash Base",
+  "title_ar": "Baidu تطلق نموذج ERNIE 5.5 Flash Base مفتوح الأوزان",
+  "summary_en": "Baidu released ERNIE 5.5 Flash Base, a sparse mixture-of-experts base model with 280B total and 14B active parameters, pre-trained from scratch on 33.5T tokens and supporting a 1M-token context for fine-tuning and inference.",
+  "summary_ar": "أطلقت Baidu نموذج ERNIE 5.5 Flash Base، وهو نموذج أساسي من نوع مزيج الخبراء المتناثر يضم 280 مليار معامل إجمالاً و14 مليار معامل نشط، دُرّب مسبقاً من الصفر على 33.5 تريليون رمز، ويدعم سياقاً بطول مليون رمز للضبط الدقيق والاستدلال.",
+  "link": "https://ernie.baidu.com/release/ernie-5-5-flash-base/",
+  "precision": "month"
  }
 ]
