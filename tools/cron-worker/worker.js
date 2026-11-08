@@ -10,7 +10,7 @@
 // with "Actions: read and write" only. Set it with `wrangler secret put`.
 
 const REPO = 'maghrebme/ai-lens';
-const WORKFLOWS = { '0 4 * * 1': 'weekly-milestones.yml' };
+const WORKFLOWS = { '0 4 * * MON': 'weekly-milestones.yml' };
 const DEFAULT_WORKFLOW = 'pages.yml';
 
 export default {

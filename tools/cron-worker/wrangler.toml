@@ -7,7 +7,8 @@ preview_urls = false
 
 [triggers]
 # 00:00 and 12:00 UTC (GMT): news build. Mondays 04:00 UTC: weekly milestone check.
-crons = ["0 0,12 * * *", "0 4 * * 1"]
+# Cloudflare numbers weekdays from 1 = Sunday, so the day is named, not numbered.
+crons = ["0 0,12 * * *", "0 4 * * MON"]
 
 [observability]
 enabled = true
