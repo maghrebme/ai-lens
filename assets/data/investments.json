@@ -1351,5 +1351,18 @@
   "link": "https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever",
   "amount": 40000000000.0,
   "currency": "USD"
+ },
+ {
+  "date": "2026-11-02",
+  "type": "acquisition",
+  "org": "Marvell",
+  "region": "us",
+  "title_en": "Marvell agrees to combine with Lumentum",
+  "title_ar": "Marvell تتفق على الاندماج مع Lumentum",
+  "summary_en": "Marvell agreed to buy Lumentum, combining its electrical and Lumentum's optical technology for AI data centres. The deal is reported at $115 billion in stock, and the companies claim a $550 billion addressable market by 2030.",
+  "summary_ar": "اتفقت Marvell على الاستحواذ على Lumentum، لتجمع تقنياتها الكهربائية مع تقنيات Lumentum البصرية لمراكز بيانات الذكاء الاصطناعي. وتُقدَّر قيمة الصفقة وفق التقارير بنحو 115 مليار دولار بالأسهم، وتقول الشركتان إن سوقهما المستهدفة ستبلغ 550 مليار دولار بحلول 2030.",
+  "link": "https://investor.marvell.com/news-events/press-releases/detail/1040/marvell-and-lumentum-to-combine-creating-a-category-leader-in-ai-connectivity",
+  "amount": 115000000000.0,
+  "currency": "USD"
  }
 ]
