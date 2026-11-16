@@ -3599,5 +3599,60 @@
   "summary_en": "The second generation of Inkling: a 594B-parameter mixture of experts (17B active) with image input and adjustable effort, available first on the company's Tinker platform. It plans to release the weights under Apache 2.0.",
   "summary_ar": "الجيل الثاني من Inkling: نموذج بمعمارية خليط الخبراء بـ594 مليار معامل (17 مليارًا نشطة) يقبل الصور ويتيح ضبط مستوى الجهد، متاح أولًا على منصة Tinker التابعة للشركة. وتعتزم الشركة نشر الأوزان برخصة Apache 2.0.",
   "link": "https://thinkingmachines.ai/news/inkling-2-small/"
+ },
+ {
+  "date": "2026-11-09",
+  "category": "models",
+  "impact": 4,
+  "org": "Anthropic",
+  "title_en": "Anthropic releases Claude Fable 5.2 and Mythos 5.2",
+  "title_ar": "Anthropic تطلق Claude Fable 5.2 وClaude Mythos 5.2",
+  "summary_en": "Anthropic released Fable 5.2 and Mythos 5.2, one model in two versions: Fable with cyber and biology safeguards for all users, Mythos for verified organisations. Anthropic reports 69.9% on FrontierSWE v2. Pricing is $8/$40 per million tokens.",
+  "summary_ar": "أطلقت Anthropic نموذجَي Fable 5.2 وMythos 5.2، وهما نموذج واحد بإصدارين: Fable مزوّد بضمانات في مجالَي الأمن السيبراني والأحياء ومتاح لجميع المستخدمين، وMythos مخصص للمؤسسات المعتمدة. وتقول الشركة إنه حقق 69.9% في اختبار FrontierSWE v2، وسعره 8/40 دولارًا لكل مليون رمز.",
+  "link": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+ },
+ {
+  "date": "2026-11-10",
+  "category": "research",
+  "impact": 3,
+  "org": "Google DeepMind",
+  "title_en": "DeepMind unveils AlphaProof Code for verified software",
+  "title_ar": "DeepMind تكشف عن AlphaProof Code للتحقق الرسمي من البرمجيات",
+  "summary_en": "Google DeepMind says its AlphaProof Code agents wrote over three million lines of machine-checked Lean proof. DeepMind adds that the agents verified the core cryptographic protections in Signal down to machine instructions.",
+  "summary_ar": "تقول Google DeepMind إن وكلاء AlphaProof Code كتبوا أكثر من ثلاثة ملايين سطر من البراهين بلغة Lean تحققت منها الآلة. وتضيف أن الوكلاء تحققوا من الحمايات التشفيرية الأساسية في تطبيق Signal وصولًا إلى مستوى تعليمات الآلة.",
+  "link": "https://deepmind.google/blog/introducing-alphaproof-code/"
+ },
+ {
+  "date": "2026-11-10",
+  "category": "policy",
+  "impact": 2,
+  "org": "EU",
+  "title_en": "EU adopts AI Act regulatory sandbox rules",
+  "title_ar": "الاتحاد الأوروبي يعتمد قواعد البيئات التجريبية التنظيمية بموجب قانون الذكاء الاصطناعي",
+  "summary_en": "Implementing Regulation (EU) 2026/2487 sets rules under the AI Act for setting up and supervising AI regulatory sandboxes. It enters into force on 1 December 2026.",
+  "summary_ar": "تضع اللائحة التنفيذية (EU) 2026/2487 قواعد بموجب قانون الذكاء الاصطناعي لإنشاء البيئات التجريبية التنظيمية للذكاء الاصطناعي والإشراف عليها. وتدخل اللائحة حيز التنفيذ في 1 ديسمبر 2026.",
+  "link": "https://eur-lex.europa.eu/eli/reg_impl/2026/2487/oj"
+ },
+ {
+  "date": "2026-11-11",
+  "category": "models",
+  "impact": 3,
+  "org": "Alibaba",
+  "title_en": "Alibaba previews Qwen4-Max",
+  "title_ar": "Alibaba تطرح معاينة لنموذج Qwen4-Max",
+  "summary_en": "Alibaba Cloud opened a time-limited preview of Qwen4-Max-Preview, which it calls the next-generation flagship multimodal Qwen model. It takes text, image and video input with a 1M-token context. The preview runs until 25 November.",
+  "summary_ar": "أتاحت Alibaba Cloud معاينة محدودة المدة لنموذج Qwen4-Max-Preview، وتصفه بأنه النموذج الرائد متعدد الوسائط من الجيل التالي في عائلة Qwen. يقبل النموذج مدخلات نصية وصورًا ومقاطع فيديو، وتبلغ نافذة السياق فيه مليون رمز. وتستمر المعاينة حتى 25 نوفمبر.",
+  "link": "https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview"
+ },
+ {
+  "date": "2026-11-12",
+  "category": "models",
+  "impact": 3,
+  "org": "Google",
+  "title_en": "Google launches Gemini 4 Hydrogen",
+  "title_ar": "Google تطلق Gemini 4 Hydrogen",
+  "summary_en": "Google introduced Gemini 4 Hydrogen, a new member of the Gemini 4 family that it calls \"our daily driver for agentic workflows.\" Google says Hydrogen is 2.5× as fast as Gemini 3.8 Flash.",
+  "summary_ar": "قدّمت Google نموذج Gemini 4 Hydrogen، وهو عضو جديد في عائلة Gemini 4 تصفه بأنه نموذجها اليومي الأساسي لسير العمل القائم على الوكلاء. وتقول Google إن Hydrogen أسرع بمقدار 2.5 مرة من Gemini 3.8 Flash.",
+  "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
  }
 ]
