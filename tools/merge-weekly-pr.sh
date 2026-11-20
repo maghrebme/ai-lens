@@ -30,10 +30,18 @@ EOF
 [ "$head_repo" = "$REPO" ] || { echo "refused: #$n comes from $head_repo" >&2; exit 1; }
 case "$head" in weekly/*) ;; *) echo "refused: branch $head is not a weekly/ branch" >&2; exit 1 ;; esac
 
-files=$(api "$API/pulls/$n/files?per_page=100" | python3 -c 'import json,sys; print(" ".join(f["filename"] for f in json.load(sys.stdin)))')
-for f in $files; do
+# Every changed path must be allowed, including the old name of a renamed file,
+# and the change must be an edit (no added, removed, renamed or copied files).
+files=$(api "$API/pulls/$n/files?per_page=100" | python3 -c '
+import json,sys
+for f in json.load(sys.stdin):
+    print(f["filename"], f["status"])
+    if f.get("previous_filename"): print(f["previous_filename"], "renamed-from")')
+echo "$files" | while read -r f change; do
   case " $ALLOWED " in *" $f "*) ;; *) echo "refused: #$n changes $f" >&2; exit 1 ;; esac
-done
+  [ "$change" = "modified" ] || { echo "refused: #$n has $f as $change" >&2; exit 1; }
+done || exit 1
+files=$(echo "$files" | awk '{print $1}' | tr '\n' ' ')
 echo "checked #$n ($head): changes only $files"
 
 # Merge exactly the commit that was checked; GitHub rejects it if the branch moved.
