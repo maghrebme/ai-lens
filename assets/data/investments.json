@@ -1364,5 +1364,18 @@
   "link": "https://investor.marvell.com/news-events/press-releases/detail/1040/marvell-and-lumentum-to-combine-creating-a-category-leader-in-ai-connectivity",
   "amount": 115000000000.0,
   "currency": "USD"
+ },
+ {
+  "date": "2026-11-19",
+  "type": "ipo",
+  "org": "Anthropic",
+  "region": "us",
+  "title_en": "Anthropic's Nasdaq IPO raises $93.5 billion",
+  "title_ar": "طرح Anthropic في ناسداك يجمع 93.5 مليار دولار",
+  "summary_en": "1.127 billion shares sold at $83, including the underwriters' full option; about $119.5 billion with the concurrent private placement.",
+  "summary_ar": "بيع 1.127 مليار سهم بسعر 83 دولارًا، بما في ذلك خيار متعهدي الاكتتاب كاملًا؛ ونحو 119.5 مليار دولار مع الطرح الخاص المتزامن.",
+  "link": "https://www.anthropic.com/news/ipo-close",
+  "amount": 93500000000.0,
+  "currency": "USD"
  }
 ]
