@@ -3649,10 +3649,10 @@
   "category": "models",
   "impact": 3,
   "org": "Alibaba",
-  "title_en": "Alibaba previews Qwen4-Max",
-  "title_ar": "Alibaba تطرح معاينة لنموذج Qwen4-Max",
-  "summary_en": "Alibaba Cloud opened a time-limited preview of Qwen4-Max-Preview, which it calls the next-generation flagship multimodal Qwen model. It takes text, image and video input with a 1M-token context. The preview runs until 25 November.",
-  "summary_ar": "أتاحت Alibaba Cloud معاينة محدودة المدة لنموذج Qwen4-Max-Preview، وتصفه بأنه النموذج الرائد متعدد الوسائط من الجيل التالي في عائلة Qwen. يقبل النموذج مدخلات نصية وصورًا ومقاطع فيديو، وتبلغ نافذة السياق فيه مليون رمز. وتستمر المعاينة حتى 25 نوفمبر.",
+  "title_en": "Alibaba launches Qwen4-Max",
+  "title_ar": "Alibaba تطلق Qwen4-Max",
+  "summary_en": "Alibaba's next-generation flagship multimodal Qwen model, with text, image and video input and a 1M-token context. A preview opened on 11 November and the full release followed on 16 November at $1.50 per million input tokens. No weights are published; Alibaba says smaller Qwen4 models will be open.",
+  "summary_ar": "نموذج Qwen الرائد متعدد الوسائط من الجيل الجديد لدى Alibaba، يقبل النصوص والصور والفيديو بسياق مليون رمز. فُتحت نسخته التجريبية في 11 نوفمبر ثم صدر رسميًا في 16 نوفمبر بسعر 1.50 دولار لكل مليون رمز مُدخل. لم تُنشر أوزانه، وتقول Alibaba إن نماذج Qwen4 الأصغر ستكون مفتوحة.",
   "link": "https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview"
  },
  {
@@ -3676,5 +3676,38 @@
   "summary_en": "Google introduced Gemini 4 Hydrogen, a new member of the Gemini 4 family that it calls \"our daily driver for agentic workflows.\" Google says Hydrogen is 2.5× as fast as Gemini 3.8 Flash.",
   "summary_ar": "قدّمت Google نموذج Gemini 4 Hydrogen، وهو عضو جديد في عائلة Gemini 4 تصفه بأنه نموذجها اليومي الأساسي لسير العمل القائم على الوكلاء. وتقول Google إن Hydrogen أسرع بمقدار 2.5 مرة من Gemini 3.8 Flash.",
   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+ },
+ {
+  "date": "2026-11-17",
+  "category": "models",
+  "impact": 4,
+  "org": "OpenAI",
+  "title_en": "GPT-6.2 Astra and Sol",
+  "title_ar": "GPT-6.2 Astra وSol",
+  "summary_en": "OpenAI's new flagship Astra and cheaper Sol, for ChatGPT Work, Codex and the API. OpenAI says Astra is the first model it deploys externally that meets the High threshold for AI self-improvement under its Preparedness Framework.",
+  "summary_ar": "نموذج OpenAI الرائد الجديد Astra ونموذج Sol الأرخص، لـChatGPT Work وCodex والواجهة البرمجية. وتقول OpenAI إن Astra أول نموذج تطرحه خارجيًا يبلغ العتبة «العالية» للتحسين الذاتي للذكاء الاصطناعي في إطار الجاهزية لديها.",
+  "link": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+ },
+ {
+  "date": "2026-11-18",
+  "category": "models",
+  "impact": 3,
+  "org": "Google",
+  "title_en": "Gemini 4 Neon fills the middle of the Gemini 4 family",
+  "title_ar": "Gemini 4 Neon يملأ الفئة الوسطى من عائلة Gemini 4",
+  "summary_en": "Adapted from Gemini 4 Carbon for complex coding and enterprise work at lower cost ($3/$15 per million tokens), between Carbon and Hydrogen. Google says it ranks first on the Artificial Analysis Coding Agent Index.",
+  "summary_ar": "مشتق من Gemini 4 Carbon للبرمجة المعقدة وأعمال المؤسسات بكلفة أقل (3 و15 دولارًا لكل مليون رمز)، بين Carbon وHydrogen. وتقول Google إنه يتصدر مؤشر Artificial Analysis لوكلاء البرمجة.",
+  "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+ },
+ {
+  "date": "2026-11-19",
+  "category": "business",
+  "impact": 4,
+  "org": "Anthropic",
+  "title_en": "Anthropic starts trading on Nasdaq",
+  "title_ar": "أسهم Anthropic تبدأ التداول في ناسداك",
+  "summary_en": "Anthropic prices its IPO at $83 a share, above its $70–78 range, and begins trading as ANT. With the underwriters' option, the offering raises about $93.5 billion before costs.",
+  "summary_ar": "Anthropic تسعّر طرحها العام الأولي عند 83 دولارًا للسهم، فوق النطاق المحدد بين 70 و78 دولارًا، وتبدأ التداول بالرمز ANT. ومع خيار متعهدي الاكتتاب، يجمع الطرح نحو 93.5 مليار دولار قبل التكاليف.",
+  "link": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
  }
 ]
