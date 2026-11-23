@@ -1366,6 +1366,19 @@
   "currency": "USD"
  },
  {
+  "date": "2026-11-17",
+  "type": "funding",
+  "org": "Isomorphic Labs",
+  "region": "europe",
+  "title_en": "Isomorphic Labs raises $5 billion Series C",
+  "title_ar": "Isomorphic Labs تجمع 5 مليارات دولار في جولة تمويل من الفئة C",
+  "summary_en": "Isomorphic Labs raised an oversubscribed $5 billion Series C co-led by Greenoaks and Sequoia Capital, with Alphabet continuing to invest. The company says the funds will scale its IsoDDE drug-design engine and move first programmes toward clinical trials.",
+  "summary_ar": "جمعت Isomorphic Labs خمسة مليارات دولار في جولة من الفئة C فاق الطلب عليها المعروض، بقيادة مشتركة من Greenoaks وSequoia Capital ومع استمرار استثمار Alphabet. وتقول الشركة إن التمويل سيوسّع محرك تصميم الأدوية IsoDDE ويقرّب برامجها الأولى من التجارب السريرية.",
+  "link": "https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-series-c-investment-round",
+  "amount": 5000000000.0,
+  "currency": "USD"
+ },
+ {
   "date": "2026-11-19",
   "type": "ipo",
   "org": "Anthropic",

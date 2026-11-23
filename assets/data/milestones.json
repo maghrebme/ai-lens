@@ -3689,6 +3689,17 @@
   "link": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
  },
  {
+  "date": "2026-11-17",
+  "category": "models",
+  "impact": 4,
+  "org": "Microsoft",
+  "title_en": "Microsoft AI releases seven new in-house models",
+  "title_ar": "Microsoft AI تطلق سبعة نماذج جديدة مطوّرة داخلياً",
+  "summary_en": "Microsoft AI says it is releasing a family of seven new world-class models at exceptional price-performance, including MAI Code 2, MAI Code 2 Flash, MAI Cyber 2 Flash and MAI Image 2.7, with the coding models aimed at everyday enterprise coding.",
+  "summary_ar": "تقول Microsoft AI إنها تطلق عائلة من سبعة نماذج جديدة عالمية المستوى بنسبة أداء إلى سعر استثنائية، من بينها MAI Code 2 وMAI Code 2 Flash وMAI Cyber 2 Flash وMAI Image 2.7، مع توجيه نماذج البرمجة للاستخدام اليومي في المؤسسات.",
+  "link": "https://microsoft.ai/news/microsoft-ignite-2026/"
+ },
+ {
   "date": "2026-11-18",
   "category": "models",
   "impact": 3,
@@ -3709,5 +3720,16 @@
   "summary_en": "Anthropic prices its IPO at $83 a share, above its $70–78 range, and begins trading as ANT. With the underwriters' option, the offering raises about $93.5 billion before costs.",
   "summary_ar": "Anthropic تسعّر طرحها العام الأولي عند 83 دولارًا للسهم، فوق النطاق المحدد بين 70 و78 دولارًا، وتبدأ التداول بالرمز ANT. ومع خيار متعهدي الاكتتاب، يجمع الطرح نحو 93.5 مليار دولار قبل التكاليف.",
   "link": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+ },
+ {
+  "date": "2026-11-20",
+  "category": "models",
+  "impact": 3,
+  "org": "Thinking Machines Lab",
+  "title_en": "Thinking Machines releases open-weight Inkling 2 Mini",
+  "title_ar": "Thinking Machines تطلق النموذج مفتوح الأوزان Inkling 2 Mini",
+  "summary_en": "Inkling 2 Mini is an open-weight looped Mixture-of-Experts model with 26.4B total and 3.4B active parameters that runs on consumer laptops. Thinking Machines says it leads open-weight models under 100B on DeepSWE v1.1 and Vals Index v2.2.",
+  "summary_ar": "Inkling 2 Mini نموذج مفتوح الأوزان من نوع مزيج الخبراء بتصميم حلقي، يضم 26.4 مليار معامل إجمالاً و3.4 مليار نشطة، ويعمل على الحواسيب المحمولة الاستهلاكية. وتقول Thinking Machines إنه يتصدر النماذج المفتوحة دون 100 مليار معامل في DeepSWE v1.1 وVals Index v2.2.",
+  "link": "https://thinkingmachines.ai/news/inkling-2-mini/"
  }
 ]
